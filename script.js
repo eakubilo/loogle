@@ -3,7 +3,7 @@
 /* global angleMode, DEGREES, arc, clear, createCanvas, colorMode, HSB, width, height, random, background, fill, color, random,
           rect, rectMode, ellipse, stroke, image, loadImage, collideCircleCircle, collideRectCircle, text, tint, noTint
           mouseX, mouseY, strokeWeight, line, mouseIsPressed, noFill, windowWidth, windowHeight, noStroke, 
-          keyCode, CENTER, PI, HALF_PI, UP_ARROW, LEFT_ARROW, RIGHT_ARROW, DOWN_ARROW, textSize */
+          key, keyCode, CENTER, PI, HALF_PI, UP_ARROW, LEFT_ARROW, RIGHT_ARROW, DOWN_ARROW, textSize */
 
 let brushHue;
 let priorX;
@@ -19,7 +19,7 @@ function setup() {
   priorX = 0;
   priorY = 0;
   strokeSize = 6;
-  strokeDelta = .1;
+  strokeDelta = 0.1;
 
   background(95);
 }
@@ -57,6 +57,8 @@ function chooseColors() {
 
 function keyPressed() {
   background(95);
+  console.log("key: " + key);
+  console.log("keyCode: " + keyCode);
 }
 
 // function mousePressed() {
