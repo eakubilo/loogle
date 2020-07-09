@@ -8,6 +8,8 @@
 let brushHue;
 let priorX;
 let priorY;
+let strokeSize;
+let strokeDelta;
 
 function setup() {
   // Canvas & color settings
@@ -16,8 +18,10 @@ function setup() {
   brushHue = 0;
   priorX = 0;
   priorY = 0;
+  strokeSize = 6;
+  strokeDelta = .1;
+
   background(95);
-  strokeWeight(6);
 }
 
 function draw() {
@@ -27,8 +31,8 @@ function draw() {
     // Pick one of the three behaviors below:
     // rect(mouseX, mouseY, 15, 15);
     // ellipse(random(width), random(height), 30, 30);
-    // line(priorX, priorY, mouseX, mouseY);
-    line(width-priorX, height-priorY, width-mouseX, height-mouseY);
+    line(priorX, priorY, mouseX, mouseY);
+    // line(width-priorX, height-priorY, width-mouseX, height-mouseY);  // Mirrored line
   }
 
   // Store the mouseX and mouseY from this frame in order to use them next
@@ -41,6 +45,12 @@ function draw() {
 function chooseColors() {
   brushHue += 1;
   brushHue %= 360;
+  if (strokeSize > 20 || strokeSize <= 1) {
+    strokeDelta = -strokeDelta;
+  }
+  strokeSize += strokeDelta;
+
+  strokeWeight(strokeSize);
   stroke(brushHue, 50, 80);
   fill(brushHue, 50, 80);
 }
