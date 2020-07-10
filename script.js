@@ -12,9 +12,15 @@ let strokeSize;
 let strokeDelta;
 let drawingGraphics;
 
+// k means clustering on george floyd image then, 
+
+
+let georgeFloydImg
+
 function setup() {
   // Canvas & color settings
   createCanvas(400, 400);
+  background(0);
   brushHue = 0;   
   priorX = 0;
   priorY = 0;
