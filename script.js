@@ -15,7 +15,7 @@ let drawingGraphics;
 function setup() {
   // Canvas & color settings
   createCanvas(400, 400);
-  brushHue = 0;
+  brushHue = 0;   
   priorX = 0;
   priorY = 0;
   strokeSize = 6;
