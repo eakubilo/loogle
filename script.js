@@ -38,7 +38,7 @@ function setup() {
   createCanvas(500, 600);
   background(0);
   
-  drawingGraphics = createGraphics(width, height);
+  
   
   loadImage("https://www.pewtrusts.org/-/media/post-launch-images/2016/12/chicago_skyline/chicago_skyline_16x9.jpg", bgImage => {
     bgImage.resize(0, 600);
@@ -48,6 +48,10 @@ function setup() {
   
   sizeSlider = createSlider(1,20);
   sizeSlider.position(20,20);
+  
+  //setting up drawing layer
+  drawingGraphics = createGraphics(width, height);
+  drawingGraphics.noStroke();
   
 }
 
@@ -61,12 +65,14 @@ function draw() {
 }
 
 function drawFromMouse(){
+  if(mouseIsPressed){
+    drawingGraphics.fill(getMouseColor());  //getMouseColor()
+    drawingGraphics.rect(mouseX,mouseY,strokeSize,strokeSize);
+    image(drawingGraphics, 0, 0, width, height);
   
-  fill(brushColor);
-  rect(mouseX,mouseY,strokeSize,strokeSize);
-  //image(drawingGraphics, 0, 0, width, height);
+    //uses mouse location
+  }
   
-  //uses mouse location
 }
 
 function setColor(mode){
@@ -79,7 +85,7 @@ function setColor(mode){
     brushColor = (random(255), random(255), random(255))  
   }
   else {
-    brushColor = (r-30, g-30, b+60)
+    brushColor = (r,g, b)
   }
 }
 
@@ -94,7 +100,6 @@ function setBrush(){
 }
 
 function getMouseColor(){  //returns color of canvas under mouse 
-  loadPixels();
   let canvasPixel = get(mouseX, mouseY);
   
   return canvasPixel;
