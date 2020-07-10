@@ -1,6 +1,6 @@
 // Be sure to name any p5.js functions we use in the global so Glitch can recognize them.
 // Add to this list as you consult the p5.js documentation for other functions.
-/* global get, angleMode, createGraphics, DEGREES, arc, clear, createCanvas, colorMode, HSB, width, height, random, background, fill, color, random,
+/* global loadPixels, get, red, green, blue, angleMode, createGraphics, DEGREES, arc, clear, createCanvas, colorMode, HSB, width, height, random, background, fill, color, random,
           rect, rectMode, ellipse, stroke, image, loadImage, collideCircleCircle, collideRectCircle, text, tint, noTint
           mouseX, mouseY, strokeWeight, line, mouseIsPressed, noFill, windowWidth, windowHeight, noStroke, 
           key, keyCode, resize,CENTER, PI, HALF_PI, UP_ARROW, LEFT_ARROW, RIGHT_ARROW, DOWN_ARROW, textSize */
@@ -11,7 +11,7 @@ let priorY;
 let strokeSize;
 let strokeDelta;
 let drawingGraphics;
-let brushSize;
+let squareSize=1;
 
 
 // uses mouse to draw on an image
@@ -27,22 +27,23 @@ let georgeFloydImg;
 let r;
 let g;
 let b;
+let canvasPixel;
 
 function setup() {
   // Canvas & color settings
-  createCanvas(400, 600);
+  createCanvas(500, 600);
   background(0);
   
   loadImage('https://ichef.bbci.co.uk/news/976/cpsprodpb/13278/production/_112565487_floyd.png', georgeFloydImg => {
-    georgeFloydImg.resize(400);
-    image(georgeFloydImg, 0, 0);
+    georgeFloydImg.resize(800, 0);
+    image(georgeFloydImg, -200, 0);
   });
   
 
 }
 
 function draw() {
-  //background(95);
+  loadPixels();
   setColor();
   setBrush();
   
@@ -51,6 +52,7 @@ function draw() {
 }
 
 function drawFromMouse(){
+  
   //uses mouse location 
   
   
@@ -58,19 +60,23 @@ function drawFromMouse(){
 
 function setColor(){
   // sets color for brush, updates every frame
-  r =
-  g = green (canvasColor)
-  b = 
+  r = red(canvasPixel)
+  g = green(canvasPixel)
+  b = blue(canvasPixel)
+  
+  brushColor = (r-30, g-30, b +60)
+  
 }
 
 function setBrush(){
   //sets brush size, updates every frame
   
+  
 }
 
 function getMouseColor(){  //returns color of canvas under mouse
   let canvasColor;  //color of canvas under mouseX, mouseY  
-  let canvasPixel = get(mouseX, mouseY);
+  canvasPixel = get(mouseX, mouseY);
   
   return canvasPixel;
 }
