@@ -30,19 +30,21 @@ let bgImage;
 let r;
 let g;
 let b;
-let canvasPixel;
+
+let drawingGraphics;
 
 function setup() {
   // Canvas & color settings
   createCanvas(500, 600);
   background(0);
   
-  imageGraphics = createGraphics(width, height);
+  drawingGraphics = createGraphics(width, height);
   
   loadImage("https://www.pewtrusts.org/-/media/post-launch-images/2016/12/chicago_skyline/chicago_skyline_16x9.jpg", bgImage => {
     bgImage.resize(0, 600);
     image(bgImage, 0, 0);
   });
+  loadPixels();
   
   sizeSlider = createSlider(1,20);
   sizeSlider.position(20,20);
@@ -61,21 +63,20 @@ function draw() {
 function drawFromMouse(){
   
   fill(brushColor);
-  rect(mouseX,mouseY,squareSize,squareSize);
+  rect(mouseX,mouseY,strokeSize,strokeSize);
+  //image(drawingGraphics, 0, 0, width, height);
   
   //uses mouse location
 }
 
 function setColor(mode){
   // sets color for brush, updates every frame
-  r = red(canvasPixel)
-  g = green(canvasPixel)
-  b = blue(canvasPixel)
-  
+  r = red(getMouseColor());
+  g = green(getMouseColor());
+  b = blue(getMouseColor());
   
   if (mode == "rand"){
-    brushColor = (random(255), random(255), random(255))
-  
+    brushColor = (random(255), random(255), random(255))  
   }
   else {
     brushColor = (r-30, g-30, b+60)
@@ -83,18 +84,17 @@ function setColor(mode){
 }
 
 function keyPressed(){
-  if (keyCode == KeyR) {
+  if (keyCode == KeyR){
     setColor("rand")
   }
 }
 
 function setBrush(){
-    strokeSize = sizeSlider.value();
-  
-  
+    strokeSize = sizeSlider.value();    
 }
 
 function getMouseColor(){  //returns color of canvas under mouse 
+  loadPixels();
   let canvasPixel = get(mouseX, mouseY);
   
   return canvasPixel;
