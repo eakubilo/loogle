@@ -1,9 +1,10 @@
 // Be sure to name any p5.js functions we use in the global so Glitch can recognize them.
 // Add to this list as you consult the p5.js documentation for other functions.
 /* global loadPixels, get, red, green, blue, angleMode, createGraphics, DEGREES, arc, clear, createCanvas, colorMode, HSB, width, height, random, background, fill, color, random,
-          rect, rectMode, ellipse, stroke, image, loadImage, collideCircleCircle, collideRectCircle, text, tint, noTint
+          rect, random, keyIsPressed, rectMode, ellipse, stroke, image, loadImage, collideCircleCircle, collideRectCircle, text, tint, noTint
           mouseX, mouseY, strokeWeight, line, mouseIsPressed, noFill, windowWidth, windowHeight, noStroke, 
           key, keyCode, resize,CENTER, PI, HALF_PI, UP_ARROW, LEFT_ARROW, RIGHT_ARROW, DOWN_ARROW, textSize */
+let imageGraphics;
 
 let brushHue;
 let priorX;
@@ -11,7 +12,7 @@ let priorY;
 let strokeSize;
 let strokeDelta;
 let drawingGraphics;
-let squareSize=1;
+let squareSize=10;
 
 
 // uses mouse to draw on an image
@@ -23,7 +24,7 @@ let squareSize=1;
 
 let brushColor;
 
-let georgeFloydImg;
+let bgImage;
 let r;
 let g;
 let b;
@@ -34,9 +35,11 @@ function setup() {
   createCanvas(500, 600);
   background(0);
   
-  loadImage('https://ichef.bbci.co.uk/news/976/cpsprodpb/13278/production/_112565487_floyd.png', georgeFloydImg => {
-    georgeFloydImg.resize(800, 0);
-    image(georgeFloydImg, -200, 0);
+  imageGraphics = createGraphics(width, height);
+  
+  loadImage("https://www.pewtrusts.org/-/media/post-launch-images/2016/12/chicago_skyline/chicago_skyline_16x9.jpg", bgImage => {
+    bgImage.resize(0, 600);
+    image(bgImage, 0, 0);
   });
   
 
@@ -53,9 +56,10 @@ function draw() {
 
 function drawFromMouse(){
   
-  //uses mouse location 
+  fill(brushColor);
+  rect(mouseX,mouseY,squareSize,squareSize);
   
-  
+  //uses mouse location
 }
 
 function setColor(){
@@ -64,8 +68,14 @@ function setColor(){
   g = green(canvasPixel)
   b = blue(canvasPixel)
   
-  brushColor = (r-30, g-30, b +60)
   
+  if (keyIsPressed){
+    brushColor = (random(255), random(255), random(255))
+  
+  }
+  else {
+    brushColor = (r-30, g-30, b+60)
+  }
 }
 
 function setBrush(){
@@ -74,8 +84,7 @@ function setBrush(){
   
 }
 
-function getMouseColor(){  //returns color of canvas under mouse
-  let canvasColor;  //color of canvas under mouseX, mouseY  
+function getMouseColor(){  //returns color of canvas under mouse 
   canvasPixel = get(mouseX, mouseY);
   
   return canvasPixel;
