@@ -24,13 +24,12 @@ function setup() {
 
   colorMode(HSB, 360, 100, 100);
   drawingGraphics.colorMode(HSB, 360, 100, 100);
-
 }
 
 function draw() {
   background(95);
   chooseColors();
-  
+
   if (mouseIsPressed) {
     // Pick one of the three behaviors below:
     // rect(mouseX, mouseY, 15, 15);
@@ -39,7 +38,7 @@ function draw() {
     // line(width-priorX, height-priorY, width-mouseX, height-mouseY);  // Mirrored line
   }
   image(drawingGraphics, 0, 0, width, height);
-  
+
   // Draw a preview of the brush on top.
   ellipse(mouseX, mouseY, strokeSize);
 
@@ -61,7 +60,7 @@ function chooseColors() {
   drawingGraphics.strokeWeight(strokeSize);
   drawingGraphics.stroke(brushHue, 50, 80);
   drawingGraphics.fill(brushHue, 50, 80);
-  
+
   // Set the fill for the brush preview as well
   fill(brushHue, 50, 80);
 }
