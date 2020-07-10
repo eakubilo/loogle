@@ -36,7 +36,7 @@ let drawingGraphics;
 function setup() {
   // Canvas & color settings
   createCanvas(500, 600);
-  background(0);
+
   
   
   
@@ -85,7 +85,7 @@ function setColor(mode){
     brushColor = (random(255), random(255), random(255))  
   }
   else {
-    brushColor = (r,g, b)
+    brushColor = (r,g,b)
   }
 }
 
