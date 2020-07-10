@@ -3,7 +3,7 @@
 /* global loadPixels, get, red, green, blue, angleMode, createGraphics, DEGREES, arc, clear, createCanvas, colorMode, HSB, width, height, random, background, fill, color, random,
           rect, random, keyIsPressed, rectMode, ellipse, stroke, image, loadImage, collideCircleCircle, collideRectCircle, text, tint, noTint
           mouseX, mouseY, strokeWeight, line, mouseIsPressed, noFill, windowWidth, windowHeight, noStroke, 
-          key, keyCode, resize,CENTER, PI, HALF_PI, UP_ARROW, LEFT_ARROW, RIGHT_ARROW, DOWN_ARROW, textSize */
+          key, keyCode, createSlider, resize,CENTER, KeyR, PI, HALF_PI, UP_ARROW, LEFT_ARROW, RIGHT_ARROW, DOWN_ARROW, textSize */
 let imageGraphics;
 
 let brushHue;
@@ -11,8 +11,10 @@ let priorX;
 let priorY;
 let strokeSize;
 let strokeDelta;
-let drawingGraphics;
+//let drawingGraphics;
 let squareSize=10;
+let sizeSlider;
+
 
 
 // uses mouse to draw on an image
@@ -42,7 +44,9 @@ function setup() {
     image(bgImage, 0, 0);
   });
   
-
+  sizeSlider = createSlider(1,20);
+  sizeSlider.position(20,20);
+  
 }
 
 function draw() {
@@ -62,14 +66,14 @@ function drawFromMouse(){
   //uses mouse location
 }
 
-function setColor(){
+function setColor(mode){
   // sets color for brush, updates every frame
   r = red(canvasPixel)
   g = green(canvasPixel)
   b = blue(canvasPixel)
   
   
-  if (keyIsPressed){
+  if (mode == "rand"){
     brushColor = (random(255), random(255), random(255))
   
   }
@@ -78,14 +82,20 @@ function setColor(){
   }
 }
 
+function keyPressed(){
+  if (keyCode == KeyR) {
+    setColor("rand")
+  }
+}
+
 function setBrush(){
-  //sets brush size, updates every frame
+    strokeSize = sizeSlider.value();
   
   
 }
 
 function getMouseColor(){  //returns color of canvas under mouse 
-  canvasPixel = get(mouseX, mouseY);
+  let canvasPixel = get(mouseX, mouseY);
   
   return canvasPixel;
 }
