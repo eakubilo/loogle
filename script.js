@@ -35,29 +35,20 @@ function setup() {
   createCanvas(drawingGraphicsWidth, 2*drawingGraphicsHeight);
   background(60);
   
+  //setup input field and button
   input = createInput();
   input.position(150,500);
   
   button = createButton('enter!')
   button.position(input.x+input.width, 500);
+  button.mousePressed(getURLInput);
   
   greeting = createElement('h2', 'input image link here:');
   textAlign(CENTER);
   textSize(50)
   
- //"https://www.pewtrusts.org/-/media/post-launch-images/2016/12/chicago_skyline/chicago_skyline_16x9.jpg"
-  name = input.value();
-  console.log(name);
-  loadImage("" + name, bgImage => {
-    bgImage.resize(0, drawingGraphicsHeight);
-    image(bgImage, 0, 0);
-  });
-  loadImage(name, bgImage => {
-    bgImage.resize(0, drawingGraphicsHeight);
-    image(bgImage, 0, drawingGraphicsHeight);
-  });
   
-  
+  //setup slider
   sizeSlider = createSlider(1,maxStrokeSize);
   sizeSlider.position(20,20);
   
@@ -66,11 +57,28 @@ function setup() {
 }
 
 function draw() {
+  //getURLInput();
+  
   setBrushColor();
   setBrush();
   
   drawFromMouse();
   
+}
+
+function getURLInput(){
+  
+ //"https://www.pewtrusts.org/-/media/post-launch-images/2016/12/chicago_skyline/chicago_skyline_16x9.jpg"
+  name = input.value();
+  console.log(name);
+  loadImage('"'+ name + '"', bgImage => {
+    bgImage.resize(0, drawingGraphicsHeight);
+    image(bgImage, 0, 0);
+  });
+  loadImage('"'+ name + '"', bgImage => {
+    bgImage.resize(0, drawingGraphicsHeight);
+    image(bgImage, 0, drawingGraphicsHeight);
+  });
 }
 
 function drawFromMouse(){  //draws squares at mouse position to top graphic
