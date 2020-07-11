@@ -3,13 +3,14 @@
 /* global loadPixels, get, red, green, blue, angleMode, createGraphics, DEGREES, arc, clear, createCanvas, colorMode, HSB, width, height, random, background, fill, color, random,
           rect, random, keyIsPressed, rectMode, ellipse, stroke, image, loadImage, collideCircleCircle, collideRectCircle, text, tint, noTint
           mouseX, mouseY, strokeWeight, line, mouseIsPressed, noFill, windowWidth, windowHeight, noStroke, 
-          key, keyCode, createInput, createSlider, resize,CENTER, KeyR, PI, HALF_PI, UP_ARROW, LEFT_ARROW, RIGHT_ARROW, DOWN_ARROW, textSize */
+          key, keyCode, textAlign, createInput, createButton, createElement, createSlider, resize,CENTER, KeyR, PI, HALF_PI, UP_ARROW, LEFT_ARROW, RIGHT_ARROW, DOWN_ARROW, textSize */
 const drawingGraphicsHeight = 300;
 const drawingGraphicsWidth = 500;
 
+const maxStrokeSize = 50;
+
 let strokeSize;
 let strokeDelta;
-//let drawingGraphics;
 let squareSize=10;
 let sizeSlider;
 
@@ -22,9 +23,6 @@ let greeting;
 let brushColor;
 
 let bgImage;
-let r;
-let g;
-let b;
 
 let drawingGraphics;
 
@@ -34,20 +32,28 @@ function setup() {
   background(0);
   
   input = createInput();
- 
+  input.position(150,500);
+  
+  button = createButton('enter!')
+  button.position(input.x+input.width, 500);
+  
+  greeting = createElement('h2', 'input image link here:');
+  textAlign(CENTER);
+  textSize(50)
+  
+ //"https://www.pewtrusts.org/-/media/post-launch-images/2016/12/chicago_skyline/chicago_skyline_16x9.jpg"
 
-  loadImage("https://www.pewtrusts.org/-/media/post-launch-images/2016/12/chicago_skyline/chicago_skyline_16x9.jpg", bgImage => {
+  loadImage(input.value(), bgImage => {
     bgImage.resize(0, drawingGraphicsHeight);
     image(bgImage, 0, 0);
   });
-  loadImage("https://www.pewtrusts.org/-/media/post-launch-images/2016/12/chicago_skyline/chicago_skyline_16x9.jpg", bgImage => {
+  loadImage(input.value(), bgImage => {
     bgImage.resize(0, drawingGraphicsHeight);
     image(bgImage, 0, drawingGraphicsHeight);
   });
   
-  loadPixels();
   
-  sizeSlider = createSlider(1,20);
+  sizeSlider = createSlider(1,maxStrokeSize);
   sizeSlider.position(20,20);
   
   //setting up drawing layer
@@ -57,42 +63,47 @@ function setup() {
 }
 
 function draw() {
-  loadPixels();
-  setColor();
+  setBrushColor();
   setBrush();
   
   drawFromMouse();
   
 }
 
-function drawFromMouse(){
+function drawFromMouse(){  //draws squares at mouse position to top graphic
   if(mouseIsPressed){
     drawingGraphics.fill(getMouseColor());  //getMouseColor()
     drawingGraphics.rect(mouseX,mouseY,strokeSize,strokeSize);
     image(drawingGraphics, 0, 0, drawingGraphicsWidth, drawingGraphicsHeight);
-  
-    //uses mouse location
-  }
-  
+  } 
 }
 
-function setColor(mode){
+function setBrushColor(mode){
   // sets color for brush, updates every frame
-  r = red(getMouseColor());
-  g = green(getMouseColor());
-  b = blue(getMouseColor());
+  let r = red(getMouseColor());
+  let g = green(getMouseColor());
+  let b = blue(getMouseColor());
   
+  if(mode === "rand"){
+    brushColor = color(random(255), random(255), random(255));
+  } else{
+    brushColor = color(r + random(10), g + random(10), b + random(10));
+  }
+  
+  
+  /*
   if (mode == "rand"){
     brushColor = (random(255), random(255), random(255))  
   }
   else {
     brushColor = (r,g,b)
   }
+  */
 }
 
-function keyPressed(){
-  if (keyCode == KeyR){
-    setColor("rand")
+function keyTyped(){
+  if (key === 'r'){
+    setBrushColor("rand");
   }
 }
 
@@ -101,7 +112,7 @@ function setBrush(){
 }
 
 function getMouseColor(){  //returns color of canvas under mouse 
-  let canvasPixel = get(mouseX, mouseY+drawingGraphicsHeight);
-  
+  loadPixels();
+  let canvasPixel = get(mouseX, mouseY+drawingGraphicsHeight); 
   return canvasPixel;
 }
