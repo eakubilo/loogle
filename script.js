@@ -6,9 +6,10 @@
           key, keyCode, textAlign, createInput, createButton, createElement, createSlider, resize,CENTER, KeyR, PI, HALF_PI, UP_ARROW, LEFT_ARROW, RIGHT_ARROW, DOWN_ARROW, textSize */
 const drawingGraphicsHeight = 300;
 const drawingGraphicsWidth = 500;
+let drawingGraphics;
 
+//stroke variables
 const maxStrokeSize = 50;
-
 let strokeSize;
 let strokeDelta;
 let squareSize=10;
@@ -18,18 +19,21 @@ let sizeSlider;
 let input;
 let button;
 let greeting;
+let name;
 
-
+//brush variables
 let brushColor;
+let isBrushColorRandom = false;  //true if r is pressed
 
+// ...
 let bgImage;
 
-let drawingGraphics;
+
 
 function setup() {
   // Canvas & color settings
   createCanvas(drawingGraphicsWidth, 2*drawingGraphicsHeight);
-  background(0);
+  background(60);
   
   input = createInput();
   input.position(150,500);
@@ -42,12 +46,13 @@ function setup() {
   textSize(50)
   
  //"https://www.pewtrusts.org/-/media/post-launch-images/2016/12/chicago_skyline/chicago_skyline_16x9.jpg"
-
-  loadImage(input.value(), bgImage => {
+  name = input.value();
+  console.log(name);
+  loadImage("" + name, bgImage => {
     bgImage.resize(0, drawingGraphicsHeight);
     image(bgImage, 0, 0);
   });
-  loadImage(input.value(), bgImage => {
+  loadImage(name, bgImage => {
     bgImage.resize(0, drawingGraphicsHeight);
     image(bgImage, 0, drawingGraphicsHeight);
   });
@@ -56,9 +61,7 @@ function setup() {
   sizeSlider = createSlider(1,maxStrokeSize);
   sizeSlider.position(20,20);
   
-  //setting up drawing layer
-  drawingGraphics = createGraphics(drawingGraphicsWidth, drawingGraphicsHeight);
-  drawingGraphics.noStroke();
+  setupDrawingGraphic();
   
 }
 
@@ -84,26 +87,18 @@ function setBrushColor(mode){
   let g = green(getMouseColor());
   let b = blue(getMouseColor());
   
-  if(mode === "rand"){
-    brushColor = color(random(255), random(255), random(255));
-  } else{
+  if(isBrushColorRandom === false){
     brushColor = color(r + random(10), g + random(10), b + random(10));
+  } else{  
+    brushColor = color(random(255), random(255), random(255));
   }
-  
-  
-  /*
-  if (mode == "rand"){
-    brushColor = (random(255), random(255), random(255))  
-  }
-  else {
-    brushColor = (r,g,b)
-  }
-  */
 }
 
 function keyTyped(){
   if (key === 'r'){
-    setBrushColor("rand");
+    isBrushColorRandom = true;
+  } else{
+    isBrushColorRandom = false;
   }
 }
 
@@ -115,4 +110,12 @@ function getMouseColor(){  //returns color of canvas under mouse
   loadPixels();
   let canvasPixel = get(mouseX, mouseY+drawingGraphicsHeight); 
   return canvasPixel;
+}
+
+// SETUP METHODS
+
+function setupDrawingGraphic(){
+  //setting up drawing layer
+  drawingGraphics = createGraphics(drawingGraphicsWidth, drawingGraphicsHeight);
+  drawingGraphics.noStroke();
 }
