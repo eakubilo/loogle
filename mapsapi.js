@@ -2,7 +2,7 @@
  * Firebase config block.
  */
 var config = {
-  apiKey: 'AIzaSyDX-tgWqPmTme8lqlFn2hIsqwxGL6FYPBY',
+  apiKey: 'AIzaSyBJfHI9Hjcc0MMDU280eGZ7CqR32m61n0k',
   authDomain: 'maps-docs-team.firebaseapp.com',
   databaseURL: 'https://maps-docs-team.firebaseio.com',
   projectId: 'maps-docs-team',
