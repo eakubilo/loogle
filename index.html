@@ -14,23 +14,28 @@
     </style>
   </head>
   <body>
+    
     <h1>
       My Google Map
     </h1>
     <div id="map"></div>
     <script>
-
-      function initMap(){
+      function initMap() {
         var options = {
           zoom: 12,
-          center: {lat: 44.9778,lng:-93.2650}
-        }
+          center: { lat: 44.9778, lng: -93.265 }
+        };
 
         // new map
-        var map = new google.maps.Map(document.getElementById('map'),options);
+        var map = new google.maps.Map(document.getElementById("map"), options);
 
         // new marker
-        var marker = new google.maps.Marker({position:{lat:44.933877, lng:-93.319144}, map: map});
+        var marker = new google.maps.Marker({
+          position: { lat: 44.933877, lng: -93.319144 },
+          map: map,
+          icon:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcShSMeiaUiwu0zMvIkNTaMTv7QiWTtnzAUk3w&usqp=CAU"
+        });
       }
     </script>
     <script
