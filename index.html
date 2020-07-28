@@ -28,6 +28,7 @@
     <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
     <script
       async
       defer
@@ -86,10 +87,9 @@
           measurementId: "G-BXB4K9FG4N"
         };
         firebase.initializeApp(firebaseConfig);
-        var database = firebase.database();
-        var marker = firebase.database.ref();
+        var marker = firebase.database().ref();
         marker.on("value", function(snapshot) {
-          console.log(snapshot);
+          console.log(snapshot.val());
         });
 
         // add marker function
