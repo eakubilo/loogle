@@ -13,9 +13,16 @@
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+    <script
+      type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJfHI9Hjcc0MMDU280eGZ7CqR32m61n0k&libraries=places"
+    ></script>
 
     <script>
       let checkboxes = [];
+      let autocomplete = new google.maps.places.Autocomplete(
+        document.getElementById("address")
+      );
       function readInput() {
         if (
           document.getElementById("name").value != null &&
@@ -40,7 +47,7 @@
       }
     </script>
     <div id="data">
-      Bathroom Name: <input type="text" id="name" /><br />
+      Bathroom Name: <input type="text" id="name" onFocus - a/><br />
       Bathroom Address: <input type="text" id="address" /><br />
       <input type="checkbox" />Sink/Running water <input type="checkbox" />Soap
       <input type="checkbox" />Hand Sanitizer <input type="checkbox" />Toilet
