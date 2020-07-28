@@ -29,11 +29,18 @@
         // Avoid paying for data that you don't need by restricting the set of
         // place fields that are returned to just the address components.
         autocomplete.setFields(["address_component"]);
-        autocomplete.addListener('place_changed', geoCode);
+        autocomplete.addListener("place_changed", geoCode);
       }
-      function geoCode(){
+      function geoCode() {
         let place = autocomplete.getPlace();
+        let address = `${place.address_components[0].long_name} ${place.address_components[1].long_name}, ${place.address_components[2].long_name}, ${place.address_components[4].long_name}`;
+        let theUrl = 
         console.log(place);
+        console.log(address);
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("GET", theUrl, false); // false for synchronous request
+        xmlHttp.send(null);
+        return xmlHttp.responseText;
       }
       function readInput() {
         if (
@@ -59,7 +66,7 @@
       }
     </script>
     <div id="data">
-      Bathroom Name: <input type="text" id="name" color = "red"/><br />
+      Bathroom Name: <input type="text" id="name" /><br />
       Bathroom Address: <input type="text" id="address" /><br />
       <input type="checkbox" />Sink/Running water <input type="checkbox" />Soap
       <input type="checkbox" />Hand Sanitizer <input type="checkbox" />Toilet

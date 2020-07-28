@@ -1,7 +1,28 @@
 body {
-  background: linear-gradient(90deg,#362899,#331945);
-}
+  background: linear-gradient(90deg, #362899, #331945);
+  color: #fff;
+  font-family: "Comic Sans MS", cursive, sans-serif;
 
-#name{
-  background: #f7edff
+}
+input[type="text"] {
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  border: 1px solid white;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 25px;
+}
+input[type="check"] {
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  border: 1px solid white;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 25px;
 }
