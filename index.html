@@ -7,8 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>My Google Map</title>
     <style>
+      body,
+      html {
+        height: 100%;
+        width: 100%;
+      }
       #map {
-        height: 400px;
+        position: absolute;
+        height: 100%;
         width: 100%;
       }
     </style>
@@ -31,11 +37,34 @@
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
 
     <!--><script src="script.js"></script><!-->
+    <div id="map"></div>
     <h1>
       My Google Map
     </h1>
-    <div id="map"></div>
+
     <script>
+      function makeInfoBox(controlDiv, map) {
+        // Set CSS for the control border.
+        var controlUI = document.createElement("div");
+        controlUI.style.boxShadow = "rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px";
+        controlUI.style.backgroundColor = "#e6ceed";
+        controlUI.style.border = "2px solid #a990b0";
+        controlUI.style.borderRadius = "2px";
+        controlUI.style.marginBottom = "22px";
+        controlUI.style.marginTop = "10px";
+        controlUI.style.textAlign = "center";
+        controlDiv.appendChild(controlUI);
+
+        // Set CSS for the control interior.
+        var controlText = document.createElement("div");
+        controlText.style.color = "rgb(25,25,25)";
+        controlText.style.fontFamily = "Roboto,Arial,sans-serif";
+        controlText.style.fontSize = "100%";
+        controlText.style.padding = "6px";
+        controlText.textContent =
+          '<p>This map shows all the bathrooms near you. <a href="https://project-week-yelp-for-toilets.glitch.me/review/index.html"> Write a review here</a></p>';
+        controlUI.appendChild(controlText);
+      }
       function initMap() {
         var options = {
           zoom: 12,
@@ -44,6 +73,10 @@
 
         // new map
         var map = new google.maps.Map(document.getElementById("map"), options);
+        var infoBoxDiv = document.createElement("div");
+        makeInfoBox(infoBoxDiv, map);
+        map.controls[google.maps.ControlPosition.TOP_CENTER].push(infoBoxDiv);
+
         /*
         // new marker
         var marker = new google.maps.Marker({
@@ -114,6 +147,5 @@
         >Leave a review!</a
       >
     </button>
-
   </body>
 </html>
