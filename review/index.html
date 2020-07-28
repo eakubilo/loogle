@@ -2,12 +2,10 @@
 
 <html>
   <head>
-    <link rel="stylesheet" href="/review/style.css">
+    <link rel="stylesheet" href="/review/style.css" />
   </head>
 
   <body>
-    
-
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
 
@@ -18,16 +16,25 @@
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
-    <script
-      type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=IzaSyBJfHI9Hjcc0MMDU280eGZ7CqR32m61n0k&libraries=places"
-    ></script>
-
     <script>
       let checkboxes = [];
-      let autocomplete = new google.maps.places.Autocomplete(
-        document.getElementById("name")
-      );
+      function initAutocomplete() {
+        // Create the autocomplete object, restricting the search predictions to
+        // geographical location types.
+        autocomplete = new google.maps.places.Autocomplete(
+          document.getElementById("address"),
+          { types: ["geocode"] }
+        );
+
+        // Avoid paying for data that you don't need by restricting the set of
+        // place fields that are returned to just the address components.
+        autocomplete.setFields(["address_component"]);
+        autocomplete.addListener('place_changed', geoCode);
+      }
+      function geoCode(){
+        let place = autocomplete.getPlace();
+        console.log(place);
+      }
       function readInput() {
         if (
           document.getElementById("name").value != null &&
@@ -52,7 +59,7 @@
       }
     </script>
     <div id="data">
-      Bathroom Name: <input type="text" id="name" /><br />
+      Bathroom Name: <input type="text" id="name" color = "red"/><br />
       Bathroom Address: <input type="text" id="address" /><br />
       <input type="checkbox" />Sink/Running water <input type="checkbox" />Soap
       <input type="checkbox" />Hand Sanitizer <input type="checkbox" />Toilet
@@ -65,5 +72,9 @@
         Submit your review!
       </button>
     </div>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJfHI9Hjcc0MMDU280eGZ7CqR32m61n0k&libraries=places&callback=initAutocomplete"
+      defer
+    ></script>
   </body>
 </html>

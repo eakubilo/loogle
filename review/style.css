@@ -1,9 +1,7 @@
 body {
-  background-color: linear-gradient(
-    to bottom right,
-    purple,
-    blue
-  );
+  background: linear-gradient(90deg,#362899,#331945);
 }
 
-
+#name{
+  background: #f7edff
+}
