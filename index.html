@@ -89,7 +89,9 @@
         firebase.initializeApp(firebaseConfig);
         var marker = firebase.database().ref();
         marker.on("value", function(snapshot) {
-          console.log(snapshot.val());
+          for(let object in snapshot.val()){
+            console.log(`lat: ${object.lat} long: ${object.lng}`)
+          }
         });
 
         // add marker function
