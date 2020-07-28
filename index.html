@@ -29,11 +29,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
-    <script
-      async
-      defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJfHI9Hjcc0MMDU280eGZ7CqR32m61n0k&callback=initMap"
-    ></script>
+
     <!--><script src="script.js"></script><!-->
     <script src="firebase.js"></script>
     <h1>
@@ -89,18 +85,31 @@
         firebase.initializeApp(firebaseConfig);
         var marker = firebase.database().ref();
         marker.on("value", function(snapshot) {
-          console.log(snapshot.val());
+          let snap = snapshot.val();
+          console.log(snap);
+          for (let object in snap) {
+            addMarker(
+              {
+                coords: { lat: snap[object].lat, lng: snap[object].lng },
+                iconImage:
+                  "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
+                content: `<h1> ${object}s house </h1>`
+              },
+              map
+            );
+            console.log(snap[object].lat);
+          }
         });
 
         // add marker function
       }
     </script>
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJfHI9Hjcc0MMDU280eGZ7CqR32m61n0k&callback=initMap"
+    ></script>
   </body>
 </html>
 
-
-<div class="bg-modal">
-  
-</div>
-
-
+<div class="bg-modal"></div>
