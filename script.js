@@ -19,12 +19,41 @@ function addMarker(props, map) {
     });
   }
 }
-addMarker(
-  {    coords: { lat: 44.9778, lng: -93.265 },
-    iconImage:
-      "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
-    content: "<h1> mitras house</h1>"
+
+
+class Bathroom{
+  
+  constructor(lati, long,rating,tp,address,sink,soap,handSani,smellG,bathRoomName){
+    this.lati = lati;
+    this.long = long;
+    this.rating = 0;
+    this.address = address;
+    this.sink = sink;
+    this.soap= soap;
+    this.handSani = handSani;
+    this.smellG= smellG;
+    this.tp = tp;
+    this.bathRoomName = bathRoomName;
   }
-,map);
-addMarker({ coords: { lat: 44.9, lng: -93.265 } });
-addMarker({ coords: { lat: 44.8, lng: -93.265 } });
+  
+  score(){
+    if(this.sink){
+     this. rating++;
+    }
+    if(this.soap){
+      this.rating ++;
+    }
+    if(this.handSani){
+      this.rating += .5;
+    }
+    if(this.tp){
+      this.rating ++;
+    }
+    if(this.smellG){
+      this.rating ++
+    }
+    
+    
+  }
+  }
+
