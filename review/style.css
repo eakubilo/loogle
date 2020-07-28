@@ -15,14 +15,9 @@ input[type="text"] {
   box-sizing: border-box;
   border-radius: 25px;
 }
-input[type="check"] {
-  font-family: Impact, Charcoal, sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  border: 1px solid white;
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border-radius: 25px;
+
+input[type="checkbox"] {
+  padding: 30px;
+  height: 30px;
+  width: 30px;
 }
