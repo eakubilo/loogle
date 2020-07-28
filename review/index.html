@@ -3,17 +3,38 @@
 <html>
   <head> </head>
   <body>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+
     <script>
       function readInput() {
-        if (document.getElementById("name").value != null && document.getElementById("name").value != null) {
+        if (
+          document.getElementById("name").value != null &&
+          document.getElementById("text").value != null
+        ) {
           console.log(document.getElementById("name").value);
           console.log(document.getElementById("text").value);
         }
       }
     </script>
     <div id="data">
-      Business name: <input type="text" id="name" /><br />
-      Address: <input type="text" id="text" /><br />
+      Bathroom Name: <input type="text" id="name" /><br />
+      Bathroom Address: <input type="text" id="text" /><br />
+      <input type="checkbox" />Clean <input type="checkbox" />Sink/Running water
+      <input type="checkbox" />Soap <input type="checkbox" />Hand Sanitizer
+      <input type="checkbox" />Toilet paper<br />
+      cleanliness: <input type="range" min="0" max="5" /><br />
+      Smell: <input type="range" min="0" max="5" /> <br />
+      Ambiance: <input type="range" min="0" max="5" /><br />
+      General comments/concerns: <input type="text" id="review" /><br />
       <button type="submit" id="submit" onclick="readInput()">
         Submit your review!
       </button>
