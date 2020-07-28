@@ -28,14 +28,29 @@
 
         // new map
         var map = new google.maps.Map(document.getElementById("map"), options);
-
+        /*
         // new marker
         var marker = new google.maps.Marker({
           position: { lat: 44.933877, lng: -93.319144 },
           map: map,
-          icon:{
-            path:"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcShSMeiaUiwu0zMvIkNTaMTv7QiWTtnzAUk3w&usqp=CAU",scale: 1000
-        }});
+          icon:
+            "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
+        });
+        
+        var infoWindow = new google.maps.InfoWindow({
+          content: "<h1> Mitra's house</h1>"
+          
+        });
+        
+        marker.addListener('click',function(){
+          infoWindow.open(map,marker);
+        });
+        */
+        
+        // add marker function
+        function ad(){
+
+        }
       }
     </script>
     <script
