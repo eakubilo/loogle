@@ -35,7 +35,10 @@
           document.getElementById("address"),
           { types: ["geocode"] }
         );
-
+        autocompleteEstablishment = new google.maps.places.Autocomplete(
+          document.getElementById("name"),
+          { types: ["establishment"] }
+        );
         // Avoid paying for data that you don't need by restricting the set of
         // place fields that are returned to just the address components.
         autocomplete.setFields(["address_component"]);
@@ -51,10 +54,9 @@
         
       }
       function getLatLong(object) {
-        addressObject = object;
+        let addressObject = JSON.parse(object);
         console.log(
-          addressObject
-          //`LAT: ${addressObject["results"]["geometry"]["location"].lat} Long: ${addressObject["results"]["geometry"]["location"].lng} `
+          `LAT: ${addressObject["results"][0]["geometry"]["location"].lat} Long: ${addressObject["results"][0]["geometry"]["location"].lng} `
         );
       }
       function readInput() {

@@ -1,11 +1,13 @@
 body {
   background: linear-gradient(90deg, #362899, #331945);
   color: #fff;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  vertical-align: center;
 
 }
 input[type="text"] {
   font-family: Impact, Charcoal, sans-serif;
+  
   font-size: 14px;
   font-style: normal;
   border: 1px solid white;
@@ -17,7 +19,8 @@ input[type="text"] {
 }
 
 input[type="checkbox"] {
-  padding: 30px;
+  vertical-align: middle;
+  
   height: 30px;
   width: 30px;
 }
