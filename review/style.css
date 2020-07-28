@@ -1,5 +1,6 @@
 body {
   background: linear-gradient(90deg, #362899, #331945);
+  
   color: #fff;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   vertical-align: center;
@@ -20,7 +21,12 @@ input[type="text"] {
 
 input[type="checkbox"] {
   vertical-align: middle;
+  display: inline-block;
   
   height: 30px;
   width: 30px;
 }
+#sink{
+  background-image: url("https://cdn.glitch.com/44cd3a50-6e4b-4146-9fa2-b263cfc369cc%2Fchukwuebukass.png?1595979348430");
+}
+

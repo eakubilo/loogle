@@ -17,7 +17,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
     <script>
-      let addressObject;
+      let score;
       let checkboxes = [];
       function httpGetAsync(theUrl, callback) {
         var xmlHttp = new XMLHttpRequest();
@@ -51,7 +51,6 @@
         console.log(place);
         console.log(address);
         httpGetAsync(theUrl, getLatLong);
-        
       }
       function getLatLong(object) {
         let addressObject = JSON.parse(object);
@@ -60,37 +59,27 @@
         );
       }
       function readInput() {
-        if (
-          document.getElementById("name").value != null &&
-          document.getElementById("address").value != null
-        ) {
-          console.log(document.getElementById("name").value);
-          console.log(document.getElementById("address").value);
-        }
-        for (
-          let i = 0;
-          i < document.getElementsByTagName("input").length;
-          i++
-        ) {
-          if (
-            document.getElementsByTagName("input")[i].getAttribute("type") ==
-            "checkbox"
-          ) {
-            checkboxes.push(i);
-            console.log("yes");
-          }
-        }
+        score =
+          +document.getElementById("clean").value/5 +
+          +document.getElementById("smell").value/5 +
+          +document.getElementById("ambiance").value/5 +
+          +document.getElementById("sink").checked/2 +
+          +document.getElementById("soap").checked/2 +
+          +document.getElementById("toilet").checked/2 +
+          +document.getElementById("sanitizer").checked/2;
+        console.log(score);
       }
     </script>
     <div id="data">
       Bathroom Name: <input type="text" id="name" /><br />
       Bathroom Address: <input type="text" id="address" /><br />
-      <input type="checkbox" />Sink/Running water <input type="checkbox" />Soap
-      <input type="checkbox" />Hand Sanitizer <input type="checkbox" />Toilet
-      paper<br />
-      Cleanliness: <input type="range" min="0" max="5" /><br />
-      Smell: <input type="range" min="0" max="5" /> <br />
-      Ambiance: <input type="range" min="0" max="5" /><br />
+      <input type="checkbox" id="sink" />Sink/Running water
+      <input type="checkbox" id="soap" />Soap
+      <input type="checkbox" id="sanitizer" />Hand Sanitizer
+      <input type="checkbox" id="toilet" />Toilet paper<br />
+      Cleanliness: <input type="range" min="0" max="5" id="clean" /><br />
+      Smell: <input type="range" min="0" max="5" id="smell" /> <br />
+      Ambiance: <input type="range" min="0" max="5" id="ambiance" /><br />
       General comments/concerns: <input type="text" id="review" /><br />
       <button type="submit" id="submit" onclick="readInput()">
         Submit your review!
