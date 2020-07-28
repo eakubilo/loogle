@@ -3,18 +3,22 @@
   <head>
     <title>Hello!</title>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <title>My Google Map</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My Google Map</title>
+    
     <style>
       #map(
-      height: 480px;
+      height: 400px;
       width: 100%;
       )
     </style>
     
   </head>  
   <body>
+    <h1>
+    My Google Map
+    </h1>
     <div id="map"></div>
     <script>
       
@@ -23,7 +27,7 @@
           zoom: 8,
           center: {lat: 44.9778,lng:93.2650}
         }
-        var map = new google.maps,Map(document.getElementById('map'),options)
+        var map = new google.maps.Map(document.getElementById('map'),options);
       }
     </script>
     <script
