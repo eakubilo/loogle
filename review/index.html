@@ -1,7 +1,22 @@
-<div id = "data">
-  Business name: <input type = "text"><br>
-  Address: <input type = "text">
-  <button type = "submit">
-    
-  </button>
-</div> 
+<!DOCTYPE html>
+
+<html>
+  <head> </head>
+  <body>
+    <script>
+      function readInput() {
+        if (document.getElementById("name").value != null && document.getElementById("name").value != null) {
+          console.log(document.getElementById("name").value);
+          console.log(document.getElementById("text").value);
+        }
+      }
+    </script>
+    <div id="data">
+      Business name: <input type="text" id="name" /><br />
+      Address: <input type="text" id="text" /><br />
+      <button type="submit" id="submit" onclick="readInput()">
+        Submit your review!
+      </button>
+    </div>
+  </body>
+</html>
