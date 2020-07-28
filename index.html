@@ -51,18 +51,22 @@
         controlUI.style.border = "2px solid #a990b0";
         controlUI.style.borderRadius = "2px";
         controlUI.style.marginBottom = "22px";
-        controlUI.style.marginTop = "10px";
+        controlUI.style.marginTop = "80px";
         controlUI.style.textAlign = "center";
         controlDiv.appendChild(controlUI);
 
         // Set CSS for the control interior.
         var controlText = document.createElement("div");
         controlText.style.color = "rgb(25,25,25)";
-        controlText.style.fontFamily = "Roboto,Arial,sans-serif";
+        controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
         controlText.style.fontSize = "100%";
         controlText.style.padding = "6px";
         controlText.textContent =
-          '<p>This map shows all the bathrooms near you. <a href="https://project-week-yelp-for-toilets.glitch.me/review/index.html"> Write a review here</a></p>';
+          'This map shows the ratings of all the bathrooms near  you. '
+        let link = document.createElement('a');
+        link.setAttribute('href','https://project-week-yelp-for-toilets.glitch.me/review/index.html')
+        link.textContent = 'Write a review here!';
+        controlText.appendChild(link);
         controlUI.appendChild(controlText);
       }
       function initMap() {
