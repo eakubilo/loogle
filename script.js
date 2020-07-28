@@ -1,3 +1,6 @@
+var bathrooms = [];
+
+
 function addMarker(props, map) {
   // new marker
 
