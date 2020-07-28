@@ -15,23 +15,33 @@
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
 
     <script>
+      let checkboxes = [];
       function readInput() {
         if (
           document.getElementById("name").value != null &&
-          document.getElementById("text").value != null
+          document.getElementById("address").value != null
         ) {
           console.log(document.getElementById("name").value);
-          console.log(document.getElementById("text").value);
+          console.log(document.getElementById("address").value);
         }
-      }
-      let checkboxes = document.getElementsByTagName("input");
-      for(let checkbox in checkboxes){
-        console.log(checkbox);
+        for (
+          let i = 0;
+          i < document.getElementsByTagName("input").length;
+          i++
+        ) {
+          if (
+            document.getElementsByTagName("input")[i].getAttribute("type") ==
+            "checkbox"
+          ) {
+            checkboxes.push(i);
+            console.log("yes");
+          }
+        }
       }
     </script>
     <div id="data">
       Bathroom Name: <input type="text" id="name" /><br />
-      Bathroom Address: <input type="text" id="text" /><br />
+      Bathroom Address: <input type="text" id="address" /><br />
       <input type="checkbox" />Sink/Running water <input type="checkbox" />Soap
       <input type="checkbox" />Hand Sanitizer <input type="checkbox" />Toilet
       paper<br />
