@@ -14,6 +14,17 @@
     </style>
   </head>
   <body>
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="/__/firebase/7.17.1/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="/__/firebase/7.17.1/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="/__/firebase/7.17.1/firebase-auth.js"></script>
+    <script src="/__/firebase/7.17.1/firebase-firestore.js"></script>
     <script src="script.js"></script>
     <h1>
       My Google Map
@@ -46,27 +57,42 @@
           infoWindow.open(map,marker);
         });
         */
-        addMarker(
-          {
-            coords:{ lat: 44.9778, lng: -93.265 },
-            iconImage: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
-          }
-        );
-        addMarker({ coords: { lat: 44.0, lng: -93.265 }});
-        addMarker({ coords:{ lat: 44.5, lng: -93.265 }});
-        // add marker function
-        function addMarker(props){
-                  // new marker
-        
-        var marker = new google.maps.Marker({
-          position: props.coords ,
-          map: map,
-          //icon: props.iconImage
+        var config = {
+          apiKey: "AIzaSyDNgAV2NfQdOXLQNhMWFOk13yCxwaqRzso",
+          authDomain: "maptoilet-f8347.firebaseapp.com",
+          databaseURL: "https://databaseName.firebaseio.com",
+          storageBucket: "bucket.appspot.com"
+        };
+        addMarker({
+          coords: { lat: 44.9778, lng: -93.265 },
+          iconImage:
+            "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
+          content: "<h1> mitras house</h1>"
         });
-          if(prpos.iconImage){
-            marker.setIcon(props.iconImage)
-          }
+        addMarker({ coords: { lat: 44.9, lng: -93.265 } });
+        addMarker({ coords: { lat: 44.8, lng: -93.265 } });
+        // add marker function
+        function addMarker(props) {
+          // new marker
 
+          var marker = new google.maps.Marker({
+            position: props.coords,
+            map: map
+            //icon: props.iconImage
+          });
+          if (props.iconImage) {
+            marker.setIcon(props.iconImage);
+          }
+          if (props.content) {
+            var infoWindow = new google.maps.InfoWindow({
+    marker.addListener('click',function(){
+          infoWindow.open(map,marker);
+        }           content: props.content
+            });
+             marker.addListener('click',function(){
+          infoWindow.open(map,marker);
+        }
+          }
         }
       }
     </script>
