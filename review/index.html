@@ -69,6 +69,9 @@
           +document.getElementById("sanitizer").checked/2;
         console.log(score);
       }
+      function writeData(name, address, clean, smell, ambiance, sink, soap, toilet, sanitizer, score){
+        firebase.database().ref('')
+      }
     </script>
     <div id="data">
       Bathroom Name: <input type="text" id="name" /><br />
@@ -76,10 +79,10 @@
       
       <input type="checkbox" id="sink" /><label for="sink"></label>Sink/Running water
       
-      <input type="checkbox" id="soap" />Soap
+      <input type="checkbox" id="soap" /><label for="soap"></label>Soap
 
-      <input type="checkbox" id="sanitizer" />Hand Sanitizer
-      <input type="checkbox" id="toilet" />Toilet paper<br />
+      <input type="checkbox" id="sanitizer" /><label for="sanitizer"></label>Hand Sanitizer
+      <input type="checkbox" id="toilet" /><label for="toilet"></label>Toilet paper<br />
       Cleanliness: <input type="range" min="0" max="5" id="clean" /><br />
       Smell: <input type="range" min="0" max="5" id="smell" /> <br />
       Ambiance: <input type="range" min="0" max="5" id="ambiance" /><br />
