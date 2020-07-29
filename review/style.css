@@ -28,16 +28,16 @@ input[type="text"] {
   
 }
 */
-input[type=checkbox] {
+/*input[type=checkbox] {
     display:none;
-}
+}*/
 
 input[type=checkbox] + label {
     vertical-align: middle;
  
 
     display:inline-block;
-    padding: 5 5 5 5px;
+  
     background:url("https://pbs.twimg.com/profile_images/550291079719698432/LbybHjIh.jpeg") no-repeat;
     height: 30px;
     width: 30px;
@@ -45,7 +45,7 @@ input[type=checkbox] + label {
 }
 
 input[type=checkbox]:checked + label {
-    padding: 5 5 5 5px;
+    margin-right: 10px;
     background:url("https://cdn4.iconfinder.com/data/icons/social-productivity-line-art-4/128/checkbox-square-checked-512.png") no-repeat;
     height: 30px;
     width: 30px;
