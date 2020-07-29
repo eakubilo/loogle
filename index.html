@@ -50,7 +50,6 @@
         controlUI.style.backgroundColor = "#e6ceed";
         controlUI.style.border = "2px solid #a990b0";
         controlUI.style.borderRadius = "2px";
-        console.log(controlUI.top);
         controlUI.style.textAlign = "center";
         controlDiv.appendChild(controlUI);
 
@@ -82,7 +81,7 @@
         var infoBoxDiv = document.createElement("div");
         makeInfoBox(infoBoxDiv, map);
         map.controls[google.maps.ControlPosition.TOP_CENTER].push(infoBoxDiv);
-
+        console.log(infoBoxDiv.style.backgroundPositionX);
         /*
         // new marker
         var marker = new google.maps.Marker({
