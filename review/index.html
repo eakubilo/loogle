@@ -28,7 +28,7 @@
         measurementId: "G-BXB4K9FG4N"
       };
       firebase.initializeApp(firebaseConfig);
-
+      let businessName;
       let score;
       let lati;
       let long;
@@ -64,6 +64,7 @@
         let theUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyBJfHI9Hjcc0MMDU280eGZ7CqR32m61n0k`;
         console.log(place);
         console.log(address);
+        businessName = autocompleteEstablishment.getPlace().name;
         httpGetAsync(theUrl, getLatLong);
       }
       function getLatLong(object) {
@@ -94,7 +95,7 @@
           .set({
             lat: lati,
             lng: long,
-            name: document.getElementById("name").value,
+            name: businessName,
             address: document.getElementById("address").value,
             clean: document.getElementById("clean").value,
             smell: document.getElementById("smell").value,
