@@ -72,11 +72,20 @@
           navigator.geolocation.getCurrentPosition(showPosition);
         }
       }
+      function ensureLocation(){
+        getLocation();
+        if (lat != undefined && long != undefined()) {
+          initMap();
+        } else {
+          await sleep(2000);
+          ensureLocation();
+        }
+      }
       function showPosition(position) {
         lat = position.coords.latitude;
         long = position.coords.longitude;
       }
-      getLocation();
+
       console.log(lat);
       function makeInfoBox(controlDiv, map) {
         // Set CSS for the control border.
