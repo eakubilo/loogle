@@ -54,7 +54,6 @@
     <script>
       let lat;
       let long;
-      let identity = 0;
       function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
       }
@@ -162,7 +161,6 @@
           let snap = snapshot.val();
           console.log(snap);
           for (let object in snap) {
-            identity++;
             addMarker(
               {
                 coords: { lat: snap[object].lat, lng: snap[object].lng },

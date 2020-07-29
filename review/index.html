@@ -17,6 +17,18 @@
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
     <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyDNgAV2NfQdOXLQNhMWFOk13yCxwaqRzso",
+        authDomain: "maptoilet-f8347.firebaseapp.com",
+        databaseURL: "https://maptoilet-f8347.firebaseio.com",
+        projectId: "maptoilet-f8347",
+        storageBucket: "maptoilet-f8347.appspot.com",
+        messagingSenderId: "474262007484",
+        appId: "1:474262007484:web:7b0e2ca850f538ded62ab9",
+        measurementId: "G-BXB4K9FG4N"
+      };
+      firebase.initializeApp(firebaseConfig);
+
       let score;
       let lati;
       let long;
@@ -56,58 +68,78 @@
       }
       function getLatLong(object) {
         let addressObject = JSON.parse(object);
+        lati = addressObject["results"][0]["geometry"]["location"].lat;
+        long = addressObject["results"][0]["geometry"]["location"].lng;
         console.log(
           `LAT: ${addressObject["results"][0]["geometry"]["location"].lat} Long: ${addressObject["results"][0]["geometry"]["location"].lng} `
         );
       }
       function readInput() {
         score =
-          +document.getElementById("clean").value/5 +
-          +document.getElementById("smell").value/5 +
-          +document.getElementById("ambiance").value/5 +
-          +document.getElementById("sink").checked/2 +
-          +document.getElementById("soap").checked/2 +
-          +document.getElementById("toilet").checked/2 +
-          +document.getElementById("sanitizer").checked/2;
+          +document.getElementById("clean").value / 5 +
+          +document.getElementById("smell").value / 5 +
+          +document.getElementById("ambiance").value / 5 +
+          +document.getElementById("sink").checked / 2 +
+          +document.getElementById("soap").checked / 2 +
+          +document.getElementById("toilet").checked / 2 +
+          +document.getElementById("sanitizer").checked / 2;
         console.log(score);
-        writeData()
+        writeData();
       }
-      function writeData(){
-        identity++
-        firebase.database().ref('maptoilet-f8347/' + (identity)).set({
-          lat: lati,
-          lng: long,
-          name: document.getElementById("name").value,
-          address: document.getElementById("address").value,
-          clean: document.getElementById("clean").value,
-          smell: document.getElementById("smell").value,
-          ambiance: document.getElementById("ambiance").value,
-          sink: document.getElementById("sink").checked,
-          soap: document.getElementById("soap").checked,
-          toilet: document.getElementById("toilet").checked,
-          sanitizer: document.getElementById("sanitizer").checked,
-          review: document.getElementById("review").value,
-          val: score
+      function writeData() {
+        console.log(uuidv4());
+        firebase
+          .database()
+          .ref(uuidv4())
+          .set({
+            lat: lati,
+            lng: long,
+            name: document.getElementById("name").value,
+            address: document.getElementById("address").value,
+            clean: document.getElementById("clean").value,
+            smell: document.getElementById("smell").value,
+            ambiance: document.getElementById("ambiance").value,
+            sink: document.getElementById("sink").checked,
+            soap: document.getElementById("soap").checked,
+            toilet: document.getElementById("toilet").checked,
+            sanitizer: document.getElementById("sanitizer").checked,
+            review: document.getElementById("review").value,
+            val: score
+          });
+      }
+      function uuidv4() {
+        return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(
+          c
+        ) {
+          var r = (Math.random() * 16) | 0,
+            v = c == "x" ? r : (r & 0x3) | 0x8;
+          return v.toString(16);
         });
       }
     </script>
     <div id="data">
-      Bathroom Name: <input type="text" id="name" /><br />
-      Bathroom Address: <input type="text" id="address" /><br />
-      
-      <input type="checkbox" id="sink" /><label for="sink"></label>Sink/Running water
-      
-      <input type="checkbox" id="soap" /><label for="soap"></label>Soap
+      <form id='review-form'>
+        Bathroom Name: <input type="text" id="name" /><br />
+        Bathroom Address: <input type="text" id="address" /><br />
 
-      <input type="checkbox" id="sanitizer" /><label for="sanitizer"></label>Hand Sanitizer
-      <input type="checkbox" id="toilet" /><label for="toilet"></label>Toilet Paper<br />
-      Cleanliness: <input type="range" min="0" max="5" id="clean" /><br />
-      Smell: <input type="range" min="0" max="5" id="smell" /> <br />
-      Ambiance: <input type="range" min="0" max="5" id="ambiance" /><br />
-      General comments/concerns: <input type="text" id="review" /><br />
-      <button type="submit" id="submit" onclick="readInput()">
-        Submit your review!
-      </button>
+        <input type="checkbox" id="sink" /><label for="sink"></label
+        >Sink/Running water
+
+        <input type="checkbox" id="soap" /><label for="soap"></label>Soap
+
+        <input type="checkbox" id="sanitizer" /><label for="sanitizer"></label
+        >Hand Sanitizer <input type="checkbox" id="toilet" /><label
+          for="toilet"
+        ></label
+        >Toilet Paper<br />
+        Cleanliness: <input type="range" min="0" max="5" id="clean" /><br />
+        Odor: <input type="range" min="0" max="5" id="smell" /> <br />
+        Ambiance: <input type="range" min="0" max="5" id="ambiance" /><br />
+        General comments/concerns: <input type="text" id="review" /><br />
+        <button type="submit" id="submit" onclick="readInput()">
+          Submit your review!
+        </button>
+      </form>
     </div>
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJfHI9Hjcc0MMDU280eGZ7CqR32m61n0k&libraries=places&callback=initAutocomplete"
