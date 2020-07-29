@@ -42,9 +42,9 @@ input[type="checkbox"] + label {
   width: 30px;
   background-size: 100%;
 }
-input[type="checkbox"]#toilet:checked + label {
+input[type="checkbox"]#sink:checked + label {
   margin-right: 10px;
-  background: url("https://cdn.glitch.com/44cd3a50-6e4b-4146-9fa2-b263cfc369cc%2Fchukwuebukass.png?1595979348430")
+  background: url("https://media-exp1.licdn.com/dms/image/C4E03AQEkuTwmq5Dlqg/profile-displayphoto-shrink_400_400/0?e=1601510400&v=beta&t=9LJcm5QXBmVfStYHKHBWA1wxao2MZMxNEPxgdaq4Oyc")
     no-repeat;
   height: 30px;
   width: 30px;

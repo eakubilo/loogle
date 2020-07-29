@@ -54,6 +54,7 @@
     <script>
       let lat;
       let long;
+      let identity = 0;
       function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
       }
@@ -108,7 +109,7 @@
       }
       function initMap() {
         var options = {
-          zoom: 12,
+          zoom: 16,
           center: { lat: lat, lng: long }
         };
 
@@ -161,6 +162,7 @@
           let snap = snapshot.val();
           console.log(snap);
           for (let object in snap) {
+            identity++;
             addMarker(
               {
                 coords: { lat: snap[object].lat, lng: snap[object].lng },

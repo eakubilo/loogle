@@ -18,6 +18,8 @@
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
     <script>
       let score;
+      let lati;
+      let long;
       let checkboxes = [];
       function httpGetAsync(theUrl, callback) {
         var xmlHttp = new XMLHttpRequest();
@@ -68,9 +70,25 @@
           +document.getElementById("toilet").checked/2 +
           +document.getElementById("sanitizer").checked/2;
         console.log(score);
+        writeData()
       }
-      function writeData(name, address, clean, smell, ambiance, sink, soap, toilet, sanitizer, score){
-        firebase.database().ref('')
+      function writeData(){
+        identity++
+        firebase.database().ref('maptoilet-f8347/' + (identity)).set({
+          lat: lati,
+          lng: long,
+          name: document.getElementById("name").value,
+          address: document.getElementById("address").value,
+          clean: document.getElementById("clean").value,
+          smell: document.getElementById("smell").value,
+          ambiance: document.getElementById("ambiance").value,
+          sink: document.getElementById("sink").checked,
+          soap: document.getElementById("soap").checked,
+          toilet: document.getElementById("toilet").checked,
+          sanitizer: document.getElementById("sanitizer").checked,
+          review: document.getElementById("review").value,
+          val: score
+        });
       }
     </script>
     <div id="data">
@@ -82,7 +100,7 @@
       <input type="checkbox" id="soap" /><label for="soap"></label>Soap
 
       <input type="checkbox" id="sanitizer" /><label for="sanitizer"></label>Hand Sanitizer
-      <input type="checkbox" id="toilet" /><label for="toilet"></label>Toilet paper<br />
+      <input type="checkbox" id="toilet" /><label for="toilet"></label>Toilet Paper<br />
       Cleanliness: <input type="range" min="0" max="5" id="clean" /><br />
       Smell: <input type="range" min="0" max="5" id="smell" /> <br />
       Ambiance: <input type="range" min="0" max="5" id="ambiance" /><br />
