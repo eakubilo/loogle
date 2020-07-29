@@ -80,8 +80,8 @@
         var map = new google.maps.Map(document.getElementById("map"), options);
         var infoBoxDiv = document.createElement("div");
         makeInfoBox(infoBoxDiv, map);
+        infoBoxDiv.style.top = "60px";
         map.controls[google.maps.ControlPosition.TOP_CENTER].push(infoBoxDiv);
-        console.log(infoBoxDiv.style.backgroundPositionX);
         /*
         // new marker
         var marker = new google.maps.Marker({
@@ -152,5 +152,17 @@
         >Leave a review!</a
       >
     </button>
+  </body>
+</html>
+<html>
+  <head>
+    <title>search box</title>
+    <link rel = "style sheet" type = "text/css" href ="searchbar.css">
+    
+</head>
+<body>
+  <div class ="main">
+    <input type ="text" name ="box" placeholder = "Search the Area you wanna go">
+  </div>
   </body>
 </html>
