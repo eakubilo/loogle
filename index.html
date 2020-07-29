@@ -166,7 +166,7 @@
                 coords: { lat: snap[object].lat, lng: snap[object].lng },
                 iconImage:
                   "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
-                content: `<h1> ${snap[object].name}</h1> <ul><li>${snap[object].val}</li><li>${snap[object].sink}</li><li>${snap[object].clean}</li></ul> <p>${snap[object].review}</p>`
+                content: `<h1> ${snap[object].name}</h1> <ul><li>Rating: ${snap[object].val}/5</li><li>Sink: ${snap[object].sink == true ? "Yes" : "No"}</li><li>Cleanliness Score: ${snap[object].clean}/5</li></ul> <p>User Comments: "${snap[object].review}"</p>`
               },
               map
             );
