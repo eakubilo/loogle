@@ -2,17 +2,23 @@
 <html>
   <head>
     <title>search box</title>
-    <link rel = "style sheet" type = "text/css" href ="searchbar.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-</head>
-<body>
-  <div class ="main">
-    <input type ="text" name ="box" placeholder = "Search the Area you wanna go">
-    <div class ="btn">
-      <a href ="#"><i class ="fa fa-search"></i></a>
+    <link rel="style sheet" type="text/css" href="searchbar.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <div class="main">
+      <input
+        type="text"
+        name="box"
+        placeholder="Search the Area you wanna go"
+      />
+      <div class="btn">
+        <a href="#"><i class="fa fa-search"></i></a>
+      </div>
     </div>
-  </div>
   </body>
 </html>
 <html lang="en">
@@ -59,6 +65,19 @@
     </h1>
 
     <script>
+      let lat;
+      let long;
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        }
+      }
+      function showPosition(position) {
+        lat = position.coords.latitude;
+        long = position.coords.longitude;
+      }
+      getLocation();
+      console.log(lat);
       function makeInfoBox(controlDiv, map) {
         // Set CSS for the control border.
         var controlUI = document.createElement("div");
@@ -66,7 +85,8 @@
         controlUI.style.backgroundColor = "#e6ceed";
         controlUI.style.border = "2px solid #a990b0";
         controlUI.style.borderRadius = "2px";
-        controlUI.style.marginBottom = "60px";
+        controlUI.style.marginBottom = "22px";
+        controlUI.style.marginTop = "60px";
         controlUI.style.textAlign = "center";
         controlDiv.appendChild(controlUI);
 
@@ -90,7 +110,7 @@
       function initMap() {
         var options = {
           zoom: 12,
-          center: { lat: 44.9778, lng: -93.265 }
+          center: { lat: lat, lng: long }
         };
 
         // new map
@@ -100,23 +120,23 @@
         infoBoxDiv.style.top = "60px";
         map.controls[google.maps.ControlPosition.TOP_CENTER].push(infoBoxDiv);
         /*
-        // new marker
-        var marker = new google.maps.Marker({
-          position: { lat: 44.933877, lng: -93.319144 },
-          map: map,
-          icon:
-            "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
-        });
+                  // new marker
+                  var marker = new google.maps.Marker({
+                    position: { lat: 44.933877, lng: -93.319144 },
+                    map: map,
+                    icon:
+                      "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
+                  });
 
-        var infoWindow = new google.maps.InfoWindow({
-          content: "<h1> Mitra's house</h1>"
+                  var infoWindow = new google.maps.InfoWindow({
+                    content: "<h1> Mitra's house</h1>"
 
-        });
+                  });
 
-        marker.addListener('click',function(){
-          infoWindow.open(map,marker);
-        });
-        */
+                  marker.addListener('click',function(){
+                    infoWindow.open(map,marker);
+                  });
+                  */
         // addMarker(
         //   {
         //     coords: { lat: 44.9778, lng: -93.265 },
