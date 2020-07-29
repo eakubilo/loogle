@@ -8,19 +8,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
   </head>
-  <body>
-    <div class="main">
-      <input
-        type="text"
-        name="box"
-        placeholder="Search the Area you wanna go"
-      />
-      <div class="btn">
-        <a href="#"><i class="fa fa-search"></i></a>
-      </div>
-    </div>
-  </body>
-</html>
 <html lang="en">
   <head>
     <title>Hello!</title>
@@ -67,14 +54,17 @@
     <script>
       let lat;
       let long;
+      function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
       function getLocation() {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(showPosition);
         }
       }
-      function ensureLocation(){
+      async function ensureLocation() {
         getLocation();
-        if (lat != undefined && long != undefined()) {
+        if (lat != undefined && long != undefined) {
           initMap();
         } else {
           await sleep(2000);
@@ -190,7 +180,7 @@
     <script
       async
       defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJfHI9Hjcc0MMDU280eGZ7CqR32m61n0k&callback=initMap"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJfHI9Hjcc0MMDU280eGZ7CqR32m61n0k&callback=ensureLocation"
     ></script>
     <button type="button">
       <a
