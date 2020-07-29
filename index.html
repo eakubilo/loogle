@@ -166,7 +166,7 @@
                 coords: { lat: snap[object].lat, lng: snap[object].lng },
                 iconImage:
                   "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
-                content: `<h1> ${snap[object].name}</h1> <ul><li>Rating: ${snap[object].val}/5</li><li>Sink: ${snap[object].sink == true ? "Yes" : "No"}</li><li>Cleanliness Score: ${snap[object].clean}/5</li></ul> <p>User Comments: "${snap[object].review}"</p>`
+                content: `<h1> ${snap[object].name}</h1> <ul><li>Rating: ${snap[object].val}/5</li><li>Sink: ${snap[object].sink == true ? "Yes" : "No"}</li><li>Hand Sanitizer: ${snap[object].sanitizer == true ? "Yes" : "No"}</li><li>Soap: ${snap[object].soap == true ? "Yes" : "No"}</li><li>Toilet Paper: ${snap[object].toilet == true ? "Yes" : "No"}</li><li>Cleanliness Score: ${snap[object].clean}/5</li></ul> <p>User Comments: "${snap[object].review}"</p>`
               },
               map
             );
@@ -176,6 +176,7 @@
 
         // add marker function
       }
+        
     </script>
     <script
       async
@@ -188,5 +189,26 @@
         >Leave a review!</a
       >
     </button>
+  </body>
+</html>
+<html>
+  <head>
+    <title>Places Search Box</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJfHI9Hjcc0MMDU280eGZ7CqR32m61n0kallback=initAutocomplete&libraries=places&v=weekly"
+      defer
+    ></script>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script src="./app.js"></script>
+  </head>
+  <body>
+    <input
+      id="pac-input"
+      class="controls"
+      type="text"
+      placeholder="Search Box"
+    />
+    <div id="map"></div>
   </body>
 </html>
