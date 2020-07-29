@@ -37,19 +37,20 @@ input[type=checkbox] + label {
  
 
     display:inline-block;
-    padding: 100 100 100 100px;
-    background:url("https://cdn.glitch.com/44cd3a50-6e4b-4146-9fa2-b263cfc369cc%2Fchukwuebukass.png?1595979348430") no-repeat;
+    padding: 5 5 5 5px;
+    background:url("https://pbs.twimg.com/profile_images/550291079719698432/LbybHjIh.jpeg") no-repeat;
     height: 30px;
-    width: 30px;;
-    background-size: 50%;
+    width: 30px;
+    background-size: 100%;
 }
 
 input[type=checkbox]:checked + label {
+    padding: 5 5 5 5px;
     background:url("https://cdn4.iconfinder.com/data/icons/social-productivity-line-art-4/128/checkbox-square-checked-512.png") no-repeat;
     height: 30px;
     width: 30px;
     display:inline-block;
-    background-size: 50%;
+    background-size: 100%;
 }
 
 /*input[type="checkbox"] {
