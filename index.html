@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>search box</title>
     <link rel="style sheet" type="text/css" href="searchbar.css" />
     <link rel="stylesheet" href="style.css" />
     <link
@@ -11,11 +10,10 @@
   </head>
   <html lang="en">
     <head>
-      <title>Hello!</title>
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <title>My Google Map</title>
+      <title>Loogle</title>
       <style>
         body,
         #map {
@@ -45,10 +43,6 @@
 
       <!--><script src="script.js"></script><!-->
       <div id="map"></div>
-      <h1>
-        My Google Map
-      </h1>
-
       <script>
         let map;
         let lat;
@@ -88,36 +82,6 @@
         }
 
         console.log(lat);
-        function makeInfoBox(controlDiv, map) {
-          // Set CSS for the control border.
-          var controlUI = document.createElement("div");
-          controlUI.style.boxShadow =
-            "rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px";
-          controlUI.style.backgroundColor = "#e6ceed";
-          controlUI.style.border = "2px solid #a990b0";
-          controlUI.style.borderRadius = "2px";
-          controlUI.style.marginBottom = "22px";
-          controlUI.style.marginTop = "60px";
-          controlUI.style.textAlign = "center";
-          controlDiv.appendChild(controlUI);
-
-          // Set CSS for the control interior.
-          var controlText = document.createElement("div");
-          controlText.style.color = "rgb(25,25,25)";
-          controlText.style.fontFamily = "Roboto,Arial,sans-serif";
-          controlText.style.fontSize = "100%";
-          controlText.style.padding = "6px";
-          controlText.textContent =
-            "This shows all the ratings of all bathrooms near you.";
-          let link = document.createElement("a");
-          link.setAttribute(
-            "href",
-            "https://project-week-yelp-for-toilets.glitch.me/review/index.html"
-          );
-          link.textContent = "Write a review here!";
-          controlText.appendChild(link);
-          controlUI.appendChild(controlText);
-        }
         function initAutocomplete() {
           // Create the autocomplete object, restricting the search predictions to
           // geographical location types.
@@ -240,8 +204,6 @@
         defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJfHI9Hjcc0MMDU280eGZ7CqR32m61n0k&libraries=places&callback=ensureLocation"
       ></script>
-      <input type="text" id="recenter" />
-
       <div id="sidebar">
         <div class="toggle-btn" onclick="toggleSideBar()">
           <span></span>
@@ -250,7 +212,9 @@
         </div>
         <ul>
           <li><form action ="https://project-week-yelp-for-toilets.glitch.me/review/index.html">
-              
+              <button>
+                Leave a review
+            </button>
             </form></li>
           <li><input type="text" id = "locationSearch"></li>
         </ul>

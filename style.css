@@ -33,6 +33,9 @@ input{
   height: 100%;
   background: #898f8b;
   transition:all 500ms;
+  border-top: 5px solid rgba(176, 181, 177,0.8);
+  border-bottom: 5px solid rgba(176, 181, 177,0.8);
+  border-right: 5px solid rgba(176, 181, 177,0.8);
 }
 
 #sidebar.active{
