@@ -29,6 +29,7 @@
     </style>
   </head>
   <body>
+    
     <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
@@ -106,6 +107,7 @@
         controlText.appendChild(link);
         controlUI.appendChild(controlText);
       }
+      
       function initMap() {
         var options = {
           zoom: 16,
@@ -178,6 +180,7 @@
       }
         
     </script>
+    <input id="searchTextField" type="text" size="50" placeholder="Anything you want!" >
     <script
       async
       defer
@@ -189,26 +192,14 @@
         >Leave a review!</a
       >
     </button>
+  
   </body>
+  
+
+
 </html>
-<html>
-  <head>
-    <title>Places Search Box</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJfHI9Hjcc0MMDU280eGZ7CqR32m61n0kcallback=initAutocomplete&libraries=places&v=weekly"
-      defer
-    ></script>
-    <link rel="stylesheet" type="text/css" href="./style.css" />
-    <script src="./app.js"></script>
-  </head>
-  <body>
-    <input
-      id="pac-input"
-      class="controls"
-      type="text"
-      placeholder="Search Box"
-    />
-    <div id="map"></div>
-  </body>
-</html>
+  
+  
+  
+
+  
