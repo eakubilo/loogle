@@ -82,6 +82,36 @@
         }
 
         console.log(lat);
+        function makeInfoBox(controlDiv, map) {
+          // Set CSS for the control border.
+          var controlUI = document.createElement("div");
+          controlUI.style.boxShadow =
+            "rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px";
+          controlUI.style.backgroundColor = "#e6ceed";
+          controlUI.style.border = "2px solid #a990b0";
+          controlUI.style.borderRadius = "2px";
+          controlUI.style.marginBottom = "22px";
+          controlUI.style.marginTop = "60px";
+          controlUI.style.textAlign = "center";
+          controlDiv.appendChild(controlUI);
+
+          // Set CSS for the control interior.
+          var controlText = document.createElement("div");
+          controlText.style.color = "rgb(25,25,25)";
+          controlText.style.fontFamily = "Roboto,Arial,sans-serif";
+          controlText.style.fontSize = "100%";
+          controlText.style.padding = "6px";
+          controlText.textContent =
+            "This shows all the ratings of all bathrooms near you.";
+          let link = document.createElement("a");
+          link.setAttribute(
+            "href",
+            "https://project-week-yelp-for-toilets.glitch.me/review/index.html"
+          );
+          link.textContent = "Write a review here!";
+          controlText.appendChild(link);
+          controlUI.appendChild(controlText);
+        }
         function initAutocomplete() {
           // Create the autocomplete object, restricting the search predictions to
           // geographical location types.
@@ -211,7 +241,7 @@
           <span></span>
         </div>
         <ul>
-          <li><form action ="https://project-week-yelp-for-toilets.glitch.me/review/index.html">
+          <li><form action ="https://project-week-yelp-for-toilets.glitch.me/review/index.html" class = "reviewButton">
               <button>
                 Leave a review
             </button>

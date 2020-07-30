@@ -31,11 +31,11 @@ input{
   
   width: 200px;
   height: 100%;
-  background: #898f8b;
+  background: #242423;
   transition:all 500ms;
-  border-top: 5px solid rgba(176, 181, 177,0.8);
-  border-bottom: 5px solid rgba(176, 181, 177,0.8);
-  border-right: 5px solid rgba(176, 181, 177,0.8);
+ 
+  border-bottom: 3px solid rgba(176, 181, 177,0.8);
+  border-right: 3px solid rgba(176, 181, 177,0.8);
 }
 
 #sidebar.active{
@@ -64,4 +64,15 @@ input{
   height: 5px;
   background: #898f8b;
   margin:5px 0px;
+}
+
+#sidebar .button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
