@@ -21,7 +21,7 @@
         #map {
           position: absolute;
           
-          height: 200px;
+          height: 100%;
           width: 100%;
         }
       </style>
@@ -122,7 +122,7 @@
           // Create the autocomplete object, restricting the search predictions to
           // geographical location types.
           autocomplete = new google.maps.places.Autocomplete(
-            document.getElementById("recenter"),
+            document.getElementById("locationSearch"),
             { types: ["geocode"] }
           );
           // Avoid paying for data that you don't need by restricting the set of
@@ -249,14 +249,12 @@
           <span></span>
         </div>
         <ul>
-          <li>Leave a Review</li>
-          <li> Search a Location</li>
+          <li><form action ="https://project-week-yelp-for-toilets.glitch.me/review/index.html">
+              
+            </form></li>
+          <li><input type="text" id = "locationSearch"></li>
         </ul>
       </div>
-      
-      
-      
-    
     </body>
   </html>
 </html>
