@@ -1,4 +1,4 @@
-{
+*{
   margin: 0px;
   padding:0px;
   font-family:sans-serif;
@@ -21,15 +21,15 @@ input{
   padding:0px 10px;
 }
 
-*{
-  margin:0px;
-  padding: 0px;
-  font-family: sans-serif;
-
+#sidebar{
+  margin: 0px;
+  padding:0px;
+  font-family:sans-serif;
 }
 
+
 #sidebar {
-  postion:fixed;
+  position: fixed;
   width: 200px;
   height: 100%;
   background: #121719;
