@@ -64,7 +64,12 @@
         let theUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyBJfHI9Hjcc0MMDU280eGZ7CqR32m61n0k`;
         console.log(place);
         console.log(address);
-        businessName = autocompleteEstablishment.getPlace().name;
+        if (autocompleteEstablishment.getPlace()) {
+          businessName = autocompleteEstablishment.getPlace().name;
+        } else {
+          businessName = document.getElementById("name").value;
+        }
+
         httpGetAsync(theUrl, getLatLong);
       }
       function getLatLong(object) {
