@@ -20,6 +20,7 @@
         body,
         #map {
           position: relative;
+          left: 200px;
           height: 500px;
           width: 500px;
         }
@@ -209,7 +210,7 @@
                     "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
                   content: `<h1> ${
                     snap[object].name
-                  }</h1><img width="100px" src="${snap[object.image]}"><ul><li>Rating: ${
+                  }</h1><img width="100px" src="${snap[object].image}"><ul><li>Rating: ${
                     snap[object].val
                   }/5</li><li>Sink: ${
                     snap[object].sink == true ? "Yes" : "No"
