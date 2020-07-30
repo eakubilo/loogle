@@ -48,6 +48,7 @@
       </h1>
 
       <script>
+        let map;
         let lat;
         let long;
         let lati;
@@ -139,7 +140,7 @@
           let addressObject = JSON.parse(object);
           lati = addressObject["results"][0]["geometry"]["location"].lat;
           longi = addressObject["results"][0]["geometry"]["location"].lng;
-          map.
+          map.panTo({lat: lati, lng: longi});
           console.log(
             `LAT: ${addressObject["results"][0]["geometry"]["location"].lat} Long: ${addressObject["results"][0]["geometry"]["location"].lng} `
           );
@@ -152,7 +153,7 @@
           };
 
           // new map
-          var map = new google.maps.Map(
+          map = new google.maps.Map(
             document.getElementById("map"),
             options
           );
