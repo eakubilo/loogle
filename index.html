@@ -50,6 +50,8 @@
       <script>
         let lat;
         let long;
+        let lati;
+      let longi;
         let autocomplete;
         function sleep(ms) {
           return new Promise(resolve => setTimeout(resolve, ms));
@@ -136,12 +138,14 @@
         function getLatLong(object) {
           let addressObject = JSON.parse(object);
           lati = addressObject["results"][0]["geometry"]["location"].lat;
-          long = addressObject["results"][0]["geometry"]["location"].lng;
+          longi = addressObject["results"][0]["geometry"]["location"].lng;
+          map.
           console.log(
             `LAT: ${addressObject["results"][0]["geometry"]["location"].lat} Long: ${addressObject["results"][0]["geometry"]["location"].lng} `
           );
         }
         function initMap() {
+          initAutocomplete();
           var options = {
             zoom: 16,
             center: { lat: lat, lng: long }
@@ -230,15 +234,12 @@
         }
       </script>
       <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJfHI9Hjcc0MMDU280eGZ7CqR32m61n0k&libraries=places&callback=initAutocomplete"
-        defer
-      ></script>
-      <script
         async
         defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJfHI9Hjcc0MMDU280eGZ7CqR32m61n0k&callback=ensureLocation"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJfHI9Hjcc0MMDU280eGZ7CqR32m61n0k&libraries=places&callback=ensureLocation"
       ></script>
+      <input type="text" id="recenter" />
     </body>
-    <input type="text" id="recenter" />
+    
   </html>
 </html>
