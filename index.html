@@ -46,6 +46,29 @@
       <h1>
         My Google Map
       </h1>
+      
+      //<script>
+  /function initialize() {
+    var mapCanvas = document.getElementById('map');
+    var mapOptions = {
+      center: new google.maps.LatLng(18.5231,-72.2929),
+      zoom: 14,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      styles: 
+      [{"featureType":"landscape","stylers":[{"hue":"#FFBB00"},{"saturation":63.400000000000006},{"lightness":37.599999999999994},{"gamma":1}]},{"featureType":"road.highway","stylers":[{"hue":"#FFC200"},{"saturation":-61.8},{"lightness":45.599999999999994},{"gamma":1}]},{"featureType":"road.arterial","stylers":[{"hue":"#FF0300"},{"saturation":-100},{"lightness":51.19999999999999},{"gamma":1}]},{"featureType":"road.local","stylers":[{"hue":"#FF0300"},{"saturation":-100},{"lightness":52},{"gamma":1}]},{"featureType":"water","stylers":[{"hue":"#0078FF"},{"saturation":-13.200000000000003},{"lightness":2.4000000000000057},{"gamma":1}]},{"featureType":"poi","stylers":[{"hue":"#008349"},{"saturation":-1.0989010989011234},{"lightness":11.200000000000017},{"gamma":1}]}]
+    }
+    var map = new google.maps.Map(mapCanvas, mapOptions)
+    marker = new google.maps.Marker({
+        map: map, 
+        position: new google.maps.LatLng(18.5231,-72.2929),
+        icon: "img/mapmarker.png"
+        });
+    infowindow = new google.maps.InfoWindow({
+        content:"<b>Title</b><br/>123 Address<br/> City,Country" });
+        google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});infowindow.open(map,marker);
+  }
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>*/
 
       <script>
         let map;
