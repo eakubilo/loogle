@@ -24,11 +24,11 @@ input{
 *{
   margin:0px;
   padding: 0px;
-  font-family: sans-serifl
+  font-family: sans-serif;
 
 }
 
-#sidebar{
+#sidebar {
   postion:fixed;
   width: 200px;
   height: 100%;
