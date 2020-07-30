@@ -52,7 +52,7 @@
         let lat;
         let long;
         let lati;
-      let longi;
+        let longi;
         let autocomplete;
         function sleep(ms) {
           return new Promise(resolve => setTimeout(resolve, ms));
@@ -140,7 +140,7 @@
           let addressObject = JSON.parse(object);
           lati = addressObject["results"][0]["geometry"]["location"].lat;
           longi = addressObject["results"][0]["geometry"]["location"].lng;
-          map.panTo({lat: lati, lng: longi});
+          map.panTo({ lat: lati, lng: longi });
           console.log(
             `LAT: ${addressObject["results"][0]["geometry"]["location"].lat} Long: ${addressObject["results"][0]["geometry"]["location"].lng} `
           );
@@ -153,10 +153,7 @@
           };
 
           // new map
-          map = new google.maps.Map(
-            document.getElementById("map"),
-            options
-          );
+          map = new google.maps.Map(document.getElementById("map"), options);
           var infoBoxDiv = document.createElement("div");
           makeInfoBox(infoBoxDiv, map);
           infoBoxDiv.style.top = "60px";
@@ -209,7 +206,9 @@
                   coords: { lat: snap[object].lat, lng: snap[object].lng },
                   iconImage:
                     "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
-                  content: `<h1> ${snap[object].name}</h1><img width="100px" src="https://cdn.glitch.com/44cd3a50-6e4b-4146-9fa2-b263cfc369cc%2Fmills_toilet_partitions_1_1.jpg?v=1596140302201"><ul><li>Rating: ${
+                  content: `<h1> ${
+                    snap[object].name
+                  }</h1><img width="100px" src="https://cdn.glitch.com/44cd3a50-6e4b-4146-9fa2-b263cfc369cc%2Fmills_toilet_partitions_1_1.jpg?v=1596140302201"><ul><li>Rating: ${
                     snap[object].val
                   }/5</li><li>Sink: ${
                     snap[object].sink == true ? "Yes" : "No"
@@ -240,7 +239,24 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJfHI9Hjcc0MMDU280eGZ7CqR32m61n0k&libraries=places&callback=ensureLocation"
       ></script>
       <input type="text" id="recenter" />
+
+      <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+          >&times;</a
+        >
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+      </div>
+
+      <div id="main">
+        <button class="openbtn" onclick="openNav()">
+          &#9776; Open Sidebar
+        </button>
+        <h2>Collapsed Sidebar</h2>
+        <p>Content...</p>
+      </div>
     </body>
-    
   </html>
 </html>
