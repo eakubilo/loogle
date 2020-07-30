@@ -8,117 +8,121 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
   </head>
-<html lang="en">
-  <head>
-    <title>Hello!</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>My Google Map</title>
-    <style>
-      body,
-      html {
-        height: 100%;
-        width: 100%;
-      }
-      #map {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
-
-    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
-
-    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
-
-    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
-
-    <!-- Add Firebase products that you want to use -->
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
-
-    <!--><script src="script.js"></script><!-->
-    <div id="map"></div>
-    <h1>
-      My Google Map
-    </h1>
-
-    <script>
-      let lat;
-      let long;
-      function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-      }
-      function getLocation() {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition);
+  <html lang="en">
+    <head>
+      <title>Hello!</title>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <title>My Google Map</title>
+      <style>
+        body,
+        html {
+          height: 100%;
+          width: 100%;
         }
-      }
-      async function ensureLocation() {
-        getLocation();
-        if (lat != undefined && long != undefined) {
-          initMap();
-        } else {
-          await sleep(2000);
-          ensureLocation();
+        #map {
+          position: absolute;
+          height: 100%;
+          width: 100%;
         }
-      }
-      function showPosition(position) {
-        lat = position.coords.latitude;
-        long = position.coords.longitude;
-      }
+      </style>
+    </head>
+    <body>
+      <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
-      console.log(lat);
-      function makeInfoBox(controlDiv, map) {
-        // Set CSS for the control border.
-        var controlUI = document.createElement("div");
-        controlUI.style.boxShadow = "rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px";
-        controlUI.style.backgroundColor = "#e6ceed";
-        controlUI.style.border = "2px solid #a990b0";
-        controlUI.style.borderRadius = "2px";
-        controlUI.style.marginBottom = "22px";
-        controlUI.style.marginTop = "60px";
-        controlUI.style.textAlign = "center";
-        controlDiv.appendChild(controlUI);
+      <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+      <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
-        // Set CSS for the control interior.
-        var controlText = document.createElement("div");
-        controlText.style.color = "rgb(25,25,25)";
-        controlText.style.fontFamily = "Roboto,Arial,sans-serif";
-        controlText.style.fontSize = "100%";
-        controlText.style.padding = "6px";
-        controlText.textContent =
-          "This shows all the ratings of all bathrooms near you.";
-        let link = document.createElement("a");
-        link.setAttribute(
-          "href",
-          "https://project-week-yelp-for-toilets.glitch.me/review/index.html"
-        );
-        link.textContent = "Write a review here!";
-        controlText.appendChild(link);
-        controlUI.appendChild(controlText);
-      }
-      function initMap() {
-        var options = {
-          zoom: 16,
-          center: { lat: lat, lng: long }
-        };
+      <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
 
-        // new map
-        var map = new google.maps.Map(document.getElementById("map"), options);
-        var infoBoxDiv = document.createElement("div");
-        makeInfoBox(infoBoxDiv, map);
-        infoBoxDiv.style.top = "60px";
-        map.controls[google.maps.ControlPosition.TOP_CENTER].push(infoBoxDiv);
-        /*
+      <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
+
+      <!-- Add Firebase products that you want to use -->
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+
+      <!--><script src="script.js"></script><!-->
+      <div id="map"></div>
+      <h1>
+        My Google Map
+      </h1>
+
+      <script>
+        let lat;
+        let long;
+        function sleep(ms) {
+          return new Promise(resolve => setTimeout(resolve, ms));
+        }
+        function getLocation() {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+          }
+        }
+        async function ensureLocation() {
+          getLocation();
+          if (lat != undefined && long != undefined) {
+            initMap();
+          } else {
+            await sleep(2000);
+            ensureLocation();
+          }
+        }
+        function showPosition(position) {
+          lat = position.coords.latitude;
+          long = position.coords.longitude;
+        }
+
+        console.log(lat);
+        function makeInfoBox(controlDiv, map) {
+          // Set CSS for the control border.
+          var controlUI = document.createElement("div");
+          controlUI.style.boxShadow =
+            "rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px";
+          controlUI.style.backgroundColor = "#e6ceed";
+          controlUI.style.border = "2px solid #a990b0";
+          controlUI.style.borderRadius = "2px";
+          controlUI.style.marginBottom = "22px";
+          controlUI.style.marginTop = "60px";
+          controlUI.style.textAlign = "center";
+          controlDiv.appendChild(controlUI);
+
+          // Set CSS for the control interior.
+          var controlText = document.createElement("div");
+          controlText.style.color = "rgb(25,25,25)";
+          controlText.style.fontFamily = "Roboto,Arial,sans-serif";
+          controlText.style.fontSize = "100%";
+          controlText.style.padding = "6px";
+          controlText.textContent =
+            "This shows all the ratings of all bathrooms near you.";
+          let link = document.createElement("a");
+          link.setAttribute(
+            "href",
+            "https://project-week-yelp-for-toilets.glitch.me/review/index.html"
+          );
+          link.textContent = "Write a review here!";
+          controlText.appendChild(link);
+          controlUI.appendChild(controlText);
+        }
+        function initMap() {
+          var options = {
+            zoom: 16,
+            center: { lat: lat, lng: long }
+          };
+
+          // new map
+          var map = new google.maps.Map(
+            document.getElementById("map"),
+            options
+          );
+          var infoBoxDiv = document.createElement("div");
+          makeInfoBox(infoBoxDiv, map);
+          infoBoxDiv.style.top = "60px";
+          map.controls[google.maps.ControlPosition.TOP_CENTER].push(infoBoxDiv);
+          /*
                   // new marker
                   var marker = new google.maps.Marker({
                     position: { lat: 44.933877, lng: -93.319144 },
@@ -136,67 +140,72 @@
                     infoWindow.open(map,marker);
                   });
                   */
-        // addMarker(
-        //   {
-        //     coords: { lat: 44.9778, lng: -93.265 },
-        //     iconImage:
-        //       "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
-        //     content: "<h1> mitras house</h1>"
-        //   },
-        //   map
-        // );
-        var firebaseConfig = {
-          apiKey: "AIzaSyDNgAV2NfQdOXLQNhMWFOk13yCxwaqRzso",
-          authDomain: "maptoilet-f8347.firebaseapp.com",
-          databaseURL: "https://maptoilet-f8347.firebaseio.com",
-          projectId: "maptoilet-f8347",
-          storageBucket: "maptoilet-f8347.appspot.com",
-          messagingSenderId: "474262007484",
-          appId: "1:474262007484:web:7b0e2ca850f538ded62ab9",
-          measurementId: "G-BXB4K9FG4N"
-        };
-        firebase.initializeApp(firebaseConfig);
-        var marker = firebase.database().ref();
-        marker.on("value", function(snapshot) {
-          let snap = snapshot.val();
-          console.log(snap);
-          for (let object in snap) {
-            addMarker(
-              {
-                coords: { lat: snap[object].lat, lng: snap[object].lng },
-                iconImage:
-                  "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
-                content: `<h1> ${snap[object].name}</h1> <ul><li>Rating: ${snap[object].val}/5</li><li>Sink: ${snap[object].sink == true ? "Yes" : "No"}</li><li>Hand Sanitizer: ${snap[object].sanitizer == true ? "Yes" : "No"}</li><li>Soap: ${snap[object].soap == true ? "Yes" : "No"}</li><li>Toilet : ${snap[object].toilet == true ? "Yes" : "No"}</li><li>Cleanliness Score: ${snap[object].clean}/5</li></ul> <p>User Comments: "${snap[object].review}"</p>`
-              },
-              map
-            );
-            console.log(snap[object].lat);
-          }
-        });
+          // addMarker(
+          //   {
+          //     coords: { lat: 44.9778, lng: -93.265 },
+          //     iconImage:
+          //       "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
+          //     content: "<h1> mitras house</h1>"
+          //   },
+          //   map
+          // );
+          var firebaseConfig = {
+            apiKey: "AIzaSyDNgAV2NfQdOXLQNhMWFOk13yCxwaqRzso",
+            authDomain: "maptoilet-f8347.firebaseapp.com",
+            databaseURL: "https://maptoilet-f8347.firebaseio.com",
+            projectId: "maptoilet-f8347",
+            storageBucket: "maptoilet-f8347.appspot.com",
+            messagingSenderId: "474262007484",
+            appId: "1:474262007484:web:7b0e2ca850f538ded62ab9",
+            measurementId: "G-BXB4K9FG4N"
+          };
+          firebase.initializeApp(firebaseConfig);
+          var marker = firebase.database().ref();
+          marker.on("value", function(snapshot) {
+            let snap = snapshot.val();
+            console.log(snap);
+            for (let object in snap) {
+              addMarker(
+                {
+                  coords: { lat: snap[object].lat, lng: snap[object].lng },
+                  iconImage:
+                    "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
+                  content: `<h1> ${snap[object].name}</h1> <ul><li>Rating: ${
+                    snap[object].val
+                  }/5</li><li>Sink: ${
+                    snap[object].sink == true ? "Yes" : "No"
+                  }</li><li>Hand Sanitizer: ${
+                    snap[object].sanitizer == true ? "Yes" : "No"
+                  }</li><li>Soap: ${
+                    snap[object].soap == true ? "Yes" : "No"
+                  }</li><li>Toilet : ${
+                    snap[object].toilet == true ? "Yes" : "No"
+                  }</li><li>Cleanliness Score: ${
+                    snap[object].clean
+                  }/5</li><li>Odor: ${
+                    snap[object].smell
+                  }/5</li></ul> <p>User Comments: "${snap[object].review}"</p>`
+                },
+                map
+              );
+              console.log(snap[object].lat);
+            }
+          });
 
-        // add marker function
-      }
-        
-    </script>
-    <script
-      async
-      defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJfHI9Hjcc0MMDU280eGZ7CqR32m61n0k&callback=ensureLocation"
-    ></script>
-    <button type="button">
-      <a
-        href="https://project-week-yelp-for-toilets.glitch.me/review/index.html"
-        >Leave a review!</a
-      >
-    </button>
-        <input
-      id="pac-input"
-      class="controls"
-      type="text"
-      placeholder="Search Box"
-    />
-  </body>
-
-
+          // add marker function
+        }
+      </script>
+      <script
+        async
+        defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJfHI9Hjcc0MMDU280eGZ7CqR32m61n0k&callback=ensureLocation"
+      ></script>
+      <button type="button">
+        <a
+          href="https://project-week-yelp-for-toilets.glitch.me/review/index.html"
+          >Leave a review!</a
+        >
+      </button>
+    </body>
+  </html>
 </html>
-  
