@@ -96,21 +96,22 @@
           controlDiv.appendChild(controlUI);
 
           // Set CSS for the control interior.
+          
           var controlText = document.createElement("div");
           controlText.style.color = "rgb(25,25,25)";
-          controlText.style.fontFamily = "Roboto,Arial,sans-serif";
+          controlText.style.fontFamily = "courier new";
           controlText.style.fontSize = "100%";
           controlText.style.padding = "6px";
           controlText.textContent =
-            "This shows all the ratings of all bathrooms near you.";
+            "Welcome to Loogle! Here to help you go, when you're on the go! ";
           let link = document.createElement("a");
           link.setAttribute(
             "href",
             "https://project-week-yelp-for-toilets.glitch.me/review/index.html"
           );
-          link.textContent = "Write a review here!";
+          link.textContent = "Write a review here!"
           controlText.appendChild(link);
-          controlUI.appendChild(controlText);
+          controlUI.appendChild(controlText); 
         }
         function initAutocomplete() {
           // Create the autocomplete object, restricting the search predictions to
