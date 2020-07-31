@@ -6,8 +6,8 @@ function addMarker(props, map) {
 
   var marker = new google.maps.Marker({
     position: props.coords,
-    map: map
-    //icon: props.iconImage
+    map: map,
+    icon: props.icon
   });
   if (props.iconImage) {
     marker.setIcon(props.iconImage);

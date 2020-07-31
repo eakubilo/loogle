@@ -96,7 +96,7 @@
           controlDiv.appendChild(controlUI);
 
           // Set CSS for the control interior.
-          
+
           var controlText = document.createElement("div");
           controlText.style.color = "rgb(25,25,25)";
           controlText.style.fontFamily = "courier new";
@@ -111,7 +111,7 @@
           );
           link.textContent = "Write a review here!"
           controlText.appendChild(link);
-          controlUI.appendChild(controlText); 
+          controlUI.appendChild(controlText);
         }
         function initAutocomplete() {
           // Create the autocomplete object, restricting the search predictions to
@@ -201,30 +201,32 @@
               // TODO(imageRatings): Define a string variable that will contain the rating HTML.
               // let ratingHtml = snap[object].val + '/5';
               let ratingHtml = '';
-              
+
               for(let i = 1; i < 6; i++){
                 if(i <= Math.floor(snap[object].val)){
-                  ratingHtml += <img src="https://cdn.glitch.com/44cd3a50-6e4b-4146-9fa2-b263cfc369cc%2Fdownload.jfif?v=1596161253422" width="10px" height="10px">;
+                  ratingHtml += '<img src="https://cdn.glitch.com/44cd3a50-6e4b-4146-9fa2-b263cfc369cc%2F415-4156515_free-star-png-free-star-transparent-images-transparent.png?v=1596211051653" width="10px" height="10px">';
                 }else{
-                  ratingHtml += <img src="https://cdn.glitch.com/44cd3a50-6e4b-4146-9fa2-b263cfc369cc%2Fdownload.png?v=1596161258677" width="10px" height="10px">;
+                  ratingHtml += '<img src="https://cdn.glitch.com/44cd3a50-6e4b-4146-9fa2-b263cfc369cc%2Fdownload.png?v=1596161258677" width="10px" height="10px">';
                 }
               }
               // TODO(imageRatings): Get a whole number rating (by rounding)
-              
-              
+
+
               // TODO(imageRatings): Loop 5 times to add img tags to ratingHtml
               //   if the loop count is <= the rating, concatenate the yellow star onto the rating string variable
               //   ratingHtml += '<img src="..." width="10px" height="10px">'
               //   otherwise, concatenate the gray star
-              
+
               // ratingHtml should look like:
               // <img src="...yellowStar" width="10px" height="10px"><img src="...yellowStar" width="10px" height="10px"><img src="...grayStar" width="10px" height="10px"><img src="...grayStar" width="10px" height="10px"><img src="...grayStar" width="10px" height="10px">
-              
+
               addMarker(
                 {
                   coords: { lat: snap[object].lat, lng: snap[object].lng },
-                  iconImage:
-                     "https://cdn.glitch.com/44cd3a50-6e4b-4146-9fa2-b263cfc369cc%2F20200728_064020.jpg?v=1595899304392",
+                  icon: {
+                    url: "https://cdn.glitch.com/44cd3a50-6e4b-4146-9fa2-b263cfc369cc%2F20200728_064020.jpg?v=1595899304392",
+                    scaledSize: new google.maps.Size(50, 50)
+                  },
                   content: `<h1> ${
                     snap[object].name
                   }</h1><img width="100px" src="${
@@ -276,17 +278,16 @@
           <li>FIND MY THRONE<input type="text" id="locationSearch" /></li>
         </ul>
         <div class="thanku">
-          Thanks for using Loogle, go crazy potty animal!<br>
-          <br>
-          with love, <br>
+          Thanks for using Loogle, go crazy potty animal!<br />
+          <br />
+          with love, <br />
           Mitra, Ebuka, and Bisman <3
         </div>
         <div class="logo">
           <img
           src="https://cdn.glitch.com/44cd3a50-6e4b-4146-9fa2-b263cfc369cc%2Fthumbnails%2Floogle%20v1.png?1596159181681"
-          /img> 
+          /img>
         </div>
-        
       </div>
     </body>
   </html>
