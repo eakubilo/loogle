@@ -114,7 +114,10 @@
           });
       }
       function buttonclicked(){
+        console.log('button was clicked');
         window.location.href='https://project-week-yelp-for-toilets.glitch.me/'
+        readInput()
+        
       }
       function uuidv4() {
         return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(
@@ -144,7 +147,7 @@
       Odor: <input type="range" min="0" max="5" id="smell" /> <br />
       Ambiance: <input type="range" min="0" max="5" id="ambiance" /><br />
       General comments/concerns: <input type="text" id="review" /><br />
-      <button type="submit" id="submit" onclick= "window.location.href='https://project-week-yelp-for-toilets.glitch.me/'" onlick2="readInput()">
+      <button type="submit" id="submit" onclick= "buttonclicked">
         Submit your review!
       </button>
     </div>

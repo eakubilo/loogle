@@ -85,15 +85,14 @@ input{
   font-size: 16px;
 }
 
-#sidebar .logo{
-    position: relative;
-    height: 300px;
-    width: 200px;
-}
-#sidebar .logo img{
-    height: 100px;
+.logo img{
+    
+   padding: 230px 25px;
+     
     width: 50px;
     display: flex;
     text-align: center;
-    align-items: flex-end;
+    align-items: stretch;
+   height: 300px;
+    width: 150px;
 }
