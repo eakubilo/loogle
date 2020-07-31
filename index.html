@@ -87,8 +87,8 @@
           var controlUI = document.createElement("div");
           controlUI.style.boxShadow =
             "rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px";
-          controlUI.style.backgroundColor = "#e6ceed";
-          controlUI.style.border = "2px solid #a990b0";
+          controlUI.style.backgroundColor = "#001205";
+          controlUI.style.border = "2px solid #001f09";
           controlUI.style.borderRadius = "2px";
           controlUI.style.marginBottom = "22px";
           controlUI.style.marginTop = "60px";
@@ -98,18 +98,20 @@
           // Set CSS for the control interior.
 
           var controlText = document.createElement("div");
-          controlText.style.color = "rgb(25,25,25)";
+          controlText.style.color = "rgb(255,255,255)";
           controlText.style.fontFamily = "courier new";
           controlText.style.fontSize = "100%";
           controlText.style.padding = "6px";
           controlText.textContent =
             "Welcome to Loogle! Here to help you go, when you're on the go! ";
+         
           let link = document.createElement("a");
           link.setAttribute(
             "href",
             "https://project-week-yelp-for-toilets.glitch.me/review/index.html"
           );
           link.textContent = "Write a review here!"
+          link.style.color="rgb(255,255,25)";
           controlText.appendChild(link);
           controlUI.appendChild(controlText);
         }
