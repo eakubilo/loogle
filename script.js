@@ -8,20 +8,23 @@ function addMarker(props, map) {
     position: props.coords,
     map: map,
     icon: props.icon
+    
   });
   if (props.iconImage) {
     marker.setIcon(props.iconImage);
   }
   if (props.content) {
     var infoWindow = new google.maps.InfoWindow({
+      
       content: props.content
     });
-
+  
     marker.addListener("click", function() {
       infoWindow.open(map, marker);
     });
   }
 }
+
 
 class Bathroom {
   constructor(
