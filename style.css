@@ -97,6 +97,8 @@ input{
    height: 300px;
     width: 150px;
 }
-.thanku{
+#sidebar .thanku{
+  position: absolute;
+  top: 150px;
   
 }

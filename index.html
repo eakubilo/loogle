@@ -197,9 +197,19 @@
             let snap = snapshot.val();
             console.log(snap);
             for (let object in snap) {
-              // TODO(imageRatings): Define a string variable for rating HTML.
+              // TODO(imageRatings): Define a string variable that will contain the rating HTML.
+              // let ratingHtml = snap[object].val + '/5';
+              let ratingHtml = '';
               
-              // TODO(imageRatings): 
+              // TODO(imageRatings): Get a whole number rating (by rounding)
+              
+              // TODO(imageRatings): Loop 5 times to add img tags to ratingHtml
+              //   if the loop count is <= the rating, concatenate the yellow star onto the rating string variable
+              //   ratingHtml += '<img src="..." width="10px" height="10px">'
+              //   otherwise, concatenate the gray star
+              
+              // ratingHtml should look like:
+              // <img src="...yellowStar" width="10px" height="10px"><img src="...yellowStar" width="10px" height="10px"><img src="...grayStar" width="10px" height="10px"><img src="...grayStar" width="10px" height="10px"><img src="...grayStar" width="10px" height="10px">
               
               addMarker(
                 {
@@ -210,7 +220,7 @@
                     snap[object].name
                   }</h1><img width="100px" src="${
                     snap[object].image
-                  }"><ul><li>Rating: ${snap[object].val}/5</li><li>Sink: ${
+                  }"><ul><li>Rating: ${ratingHtml}</li><li>Sink: ${
                     snap[object].sink == true ? "Yes" : "No"
                   }</li><li>Hand Sanitizer: ${
                     snap[object].sanitizer == true ? "Yes" : "No"
@@ -256,8 +266,9 @@
           </li>
           <li>FIND MY THRONE<input type="text" id="locationSearch" /></li>
         </ul>
-        <div clas="thanku">
-          Thanks for using Loogle, go cray !<br>
+        <div class="thanku">
+          Thanks for using Loogle, go crazy potty animal!<br>
+          <br>
           with love, <br>
           Mitra, Ebuka, and Bisman <3
         </div>
