@@ -1,7 +1,7 @@
 *{
   margin: 0px;
   padding:0px;
-  font-family:sans-serif;
+  font-family: Courier New, monospace;
 }
 /*
 body{
@@ -46,7 +46,7 @@ input{
 #sidebar ul li{
   color:rgba(230,230,230,0.9);
   list-style: none;
-  
+  text-align: center;
   border-bottom:1px solid rgba(100,100,100,0.3);
   
 }
@@ -71,7 +71,7 @@ input{
   border: none;
   color: white;
   padding:15px 32px 15px 32px;
-  font-family: sans-serif;
+  
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -79,6 +79,7 @@ input{
 }
 
 #locationSearch{
+  text-align: center;
   background-color: #242423;
   color: white;
   font-size: 16px;
