@@ -79,5 +79,7 @@ input{
 }
 
 #locationSearch{
-  background-color: #242423;\
+  background-color: #242423;
+  color: white;
+  font-size: 16px;
 }
